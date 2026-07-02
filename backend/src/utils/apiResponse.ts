@@ -1,12 +1,12 @@
 import { Response } from 'express';
 
-interface ApiSuccessResponse<T> {
+export interface ApiSuccessResponse<T> {
   success: true;
   message: string;
   data: T;
 }
 
-interface ApiErrorResponse {
+export interface ApiErrorResponse {
   success: false;
   message: string;
   errors: Record<string, string[]> | null;
