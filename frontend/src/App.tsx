@@ -1,0 +1,58 @@
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useAuth } from './context/AuthContext';
+import Layout from './components/common/Layout';
+import ProtectedRoute from './components/common/ProtectedRoute';
+import LoginPage from './pages/auth/LoginPage';
+import RegisterPage from './pages/auth/RegisterPage';
+import CustomerDashboard from './pages/customer/CustomerDashboard';
+import CreateOrder from './pages/customer/CreateOrder';
+import OrderDetail from './pages/customer/OrderDetail';
+import AgentDashboard from './pages/agent/AgentDashboard';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import ZoneManagement from './pages/admin/ZoneManagement';
+import RateCardManagement from './pages/admin/RateCardManagement';
+import AgentManagement from './pages/admin/AgentManagement';
+
+function HomeRedirect() {
+  const { user, loading } = useAuth();
+  if (loading) return <div className="loading-screen"><div className="spinner" /></div>;
+  if (!user) return <Navigate to="/login" />;
+  if (user.role === 'ADMIN') return <Navigate to="/admin/dashboard" />;
+  if (user.role === 'AGENT') return <Navigate to="/agent/dashboard" />;
+  return <Navigate to="/customer/dashboard" />;
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomeRedirect />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+
+      {/* Customer routes */}
+      <Route path="/customer" element={<ProtectedRoute roles={['CUSTOMER']}><Layout /></ProtectedRoute>}>
+        <Route path="dashboard" element={<CustomerDashboard />} />
+        <Route path="orders/new" element={<CreateOrder />} />
+        <Route path="orders/:id" element={<OrderDetail />} />
+      </Route>
+
+      {/* Agent routes */}
+      <Route path="/agent" element={<ProtectedRoute roles={['AGENT']}><Layout /></ProtectedRoute>}>
+        <Route path="dashboard" element={<AgentDashboard />} />
+        <Route path="orders/:id" element={<OrderDetail />} />
+      </Route>
+
+      {/* Admin routes */}
+      <Route path="/admin" element={<ProtectedRoute roles={['ADMIN']}><Layout /></ProtectedRoute>}>
+        <Route path="dashboard" element={<AdminDashboard />} />
+        <Route path="orders/new" element={<CreateOrder />} />
+        <Route path="orders/:id" element={<OrderDetail />} />
+        <Route path="zones" element={<ZoneManagement />} />
+        <Route path="rate-cards" element={<RateCardManagement />} />
+        <Route path="agents" element={<AgentManagement />} />
+      </Route>
+
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
+  );
+}
