@@ -2,6 +2,7 @@ services:
   - type: web
     name: lastmile-backend
     env: node
+    plan: free
     buildCommand: cd backend && npm install && npx prisma generate && npm run build
     startCommand: cd backend && npm run start
     envVars:
@@ -18,19 +19,8 @@ services:
       - key: PORT
         value: 3000
 
-  - type: web
-    name: lastmile-frontend
-    env: static
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: ./frontend/dist
-    envVars:
-      - key: VITE_API_URL
-        fromService:
-          type: web
-          name: lastmile-backend
-          envVarKey: RENDER_EXTERNAL_URL
-
 databases:
   - name: lastmile-db
+    plan: free
     databaseName: delivery_tracker
     user: delivery_user
