@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import Hero3D from '../../components/common/Hero3D';
 import Tilt from 'react-parallax-tilt';
 
 export default function LoginPage() {
@@ -36,9 +35,8 @@ export default function LoginPage() {
 
   return (
     <div className="auth-split-layout">
-      {/* Left Side: 3D Hero Section */}
-      <div className="auth-hero">
-        <Hero3D />
+      {/* Left Side: Hero Section */}
+      <div className="auth-hero" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)' }}>
         <div className="auth-hero-content animate-slide-in">
           <h1 className="auth-hero-title"><span>🚀</span> LastMileUS</h1>
           <p className="auth-hero-subtitle">
