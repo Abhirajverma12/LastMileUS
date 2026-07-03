@@ -1,30 +1,30 @@
 /* LastMileUS - Cyberpunk Carbon Fire Ultra-Premium Design System */
 :root {
-  /* Cyberpunk Dark Palette — Charcoal Black, Vibrant Orange, Cyber Yellow, Crimson Red */
-  --bg-primary: #050505;        /* Ultra deep charcoal */
-  --bg-secondary: #0a0a0c;      /* Sleek dark carbon */
-  --bg-card: rgba(18, 18, 22, 0.75);
-  --bg-glass: rgba(249, 115, 22, 0.03);
-  --border-glass: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(249, 115, 22, 0.3);
+  /* Premium Dark Palette — Deep Space, Indigo, and Violet */
+  --bg-primary: #050505;        
+  --bg-secondary: #0a0a0c;      
+  --bg-card: rgba(20, 20, 25, 0.6);
+  --bg-glass: rgba(255, 255, 255, 0.02);
+  --border-glass: rgba(255, 255, 255, 0.06);
+  --border-glow: rgba(99, 102, 241, 0.3);
   
-  --text-primary: #ffffff;      /* Pure white */
-  --text-secondary: #a1a1aa;    /* Muted zinc gray */
-  --text-muted: #52525b;        /* Dark zinc gray */
+  --text-primary: #ffffff;      
+  --text-secondary: #a1a1aa;    
+  --text-muted: #52525b;        
 
-  --accent-primary: #f97316;       /* Fire Orange */
-  --accent-secondary: #eab308;     /* Cyber Yellow */
-  --accent-tertiary: #ef4444;      /* Crimson Red */
-  --accent-gradient: linear-gradient(135deg, #ef4444 0%, #f97316 50%, #eab308 100%);
-  --accent-glow: rgba(249, 115, 22, 0.4);
-  --accent-hover: #ea580c;
+  --accent-primary: #818cf8;       /* Indigo */
+  --accent-secondary: #c084fc;     /* Purple */
+  --accent-tertiary: #38bdf8;      /* Sky Blue */
+  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  --accent-glow: rgba(139, 92, 246, 0.4);
+  --accent-hover: #6366f1;
 
   /* Status Indicators */
-  --status-pending: #eab308;
-  --status-picked: #f97316;
-  --status-transit: #f97316;
-  --status-out: #f97316;
-  --status-delivered: #22c55e;
+  --status-pending: #f59e0b;
+  --status-picked: #3b82f6;
+  --status-transit: #8b5cf6;
+  --status-out: #d946ef;
+  --status-delivered: #10b981;
   --status-failed: #ef4444;
 
   /* Layout Constants */
@@ -33,10 +33,10 @@
   --radius-lg: 24px;
   --radius-xl: 32px;
 
-  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  --shadow-card: 0 15px 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255,255,255,0.05);
-  --shadow-glow: 0 0 30px rgba(249, 115, 22, 0.4);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  --shadow-glow: 0 0 25px rgba(139, 92, 246, 0.3);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -45,9 +45,9 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-primary);
   background-image:
-    radial-gradient(ellipse at 15% 15%, rgba(239, 68, 68, 0.08) 0, transparent 45%),
-    radial-gradient(ellipse at 85% 85%, rgba(234, 179, 8, 0.06) 0, transparent 45%),
-    radial-gradient(ellipse at 50% 50%, rgba(249, 115, 22, 0.05) 0, transparent 60%);
+    radial-gradient(ellipse at 15% 15%, rgba(99, 102, 241, 0.08) 0, transparent 45%),
+    radial-gradient(ellipse at 85% 85%, rgba(168, 85, 247, 0.06) 0, transparent 45%),
+    radial-gradient(ellipse at 50% 50%, rgba(56, 189, 248, 0.05) 0, transparent 60%);
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;

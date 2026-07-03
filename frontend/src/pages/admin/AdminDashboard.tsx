@@ -61,7 +61,10 @@ export default function AdminDashboard() {
 
       {/* Stats */}
       <div className="stats-grid">
-        <div className="stat-card glass-card"><p className="stat-label">Total (Page)</p><p className="stat-value" style={{ color: '#667eea' }}>{pagination.total}</p></div>
+        <div className="stat-card glass-card">
+          <p className="stat-label">📈 Total (Page)</p>
+          <p className="stat-value" style={{ color: '#818cf8' }}>{pagination.total}</p>
+        </div>
         {Object.entries(STATUS_COLORS).map(([status, color]) => (
           <div key={status} className="stat-card glass-card">
             <p className="stat-label">{status.replace(/_/g, ' ')}</p>
