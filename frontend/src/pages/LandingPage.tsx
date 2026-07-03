@@ -52,7 +52,6 @@ export default function LandingPage() {
               ✦ GLOBAL LOGISTICS HUB
             </div>
             <h1 className="landing-headline" style={{ 
-              fontSize: '4.5rem', 
               fontWeight: 900, 
               lineHeight: 1.1,
               background: 'var(--accent-gradient)',
@@ -62,10 +61,10 @@ export default function LandingPage() {
             }}>
               Enterprise Transport<br />& Fleet Management
             </h1>
-            <p className="landing-sub-headline" style={{ fontSize: '1.25rem', color: '#a1a1aa', maxWidth: '90%', lineHeight: 1.6, marginTop: '1.5rem' }}>
+            <p className="landing-sub-headline" style={{ color: '#a1a1aa', lineHeight: 1.6, marginTop: '1.5rem' }}>
               Empower your supply chain with our state-of-the-art dispatch platform. Accelerate delivery speeds, optimize import/export routes, and gain real-time visibility across your entire global operations network.
             </p>
-            <div style={{ marginTop: '2.5rem', display: 'flex', gap: '1.5rem' }}>
+            <div style={{ marginTop: '2.5rem', display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
                <Link to={user ? getDashboardLink() : '/login'} className="btn" style={{ 
                  background: 'var(--accent-gradient)', 
                  color: '#fff', 
@@ -75,7 +74,12 @@ export default function LandingPage() {
                  fontWeight: 800,
                  boxShadow: '0 10px 25px rgba(168, 85, 247, 0.4)',
                  border: 'none',
-                 transition: 'all 0.3s ease'
+                 transition: 'all 0.3s ease',
+                 width: '100%',
+                 textAlign: 'center',
+                 display: 'flex',
+                 alignItems: 'center',
+                 justifyContent: 'center'
                }}>
                  {user ? 'Launch Hub →' : 'Start Managing Operations →'}
                </Link>
@@ -83,10 +87,10 @@ export default function LandingPage() {
           </div>
 
           <div className="landing-visual-col">
-            <div className="visual-container" style={{ position: 'relative', height: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center', perspective: '1000px' }}>
+            <div className="visual-container" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', perspective: '1000px' }}>
                
                {/* Background Glow */}
-               <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 60%)', animation: 'pulse-glow 6s infinite alternate', zIndex: 0 }}></div>
+               <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', height: '100%', background: 'radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%)', animation: 'pulse-glow 6s infinite alternate', zIndex: 0 }}></div>
                
                {/* 3D Transport Model */}
                <div style={{ width: '100%', height: '100%', position: 'relative', zIndex: 10 }}>
