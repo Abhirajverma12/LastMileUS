@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import Transport3D from '../components/common/Transport3D';
 import Tilt from 'react-parallax-tilt';
 
 export default function LandingPage() {
@@ -87,15 +86,58 @@ export default function LandingPage() {
           </div>
 
           <div className="landing-visual-col">
-            <div className="visual-container" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', perspective: '1000px' }}>
+            <div className="visual-container" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', perspective: '1000px', border: 'none', background: 'transparent', boxShadow: 'none', width: '100%', height: '100%' }}>
                
-               {/* Background Glow */}
-               <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', height: '100%', background: 'radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%)', animation: 'pulse-glow 6s infinite alternate', zIndex: 0 }}></div>
+               {/* Background Glow Only */}
+               <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', height: '100%', background: 'radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 60%)', animation: 'pulse-glow 6s infinite alternate', zIndex: 0 }}></div>
                
-               {/* 3D Transport Model */}
-               <div style={{ width: '100%', height: '100%', position: 'relative', zIndex: 10 }}>
-                 <Transport3D />
-               </div>
+               {/* Beautiful Floating CSS Mockup with 3D Tilt Interactivity */}
+               <Tilt tiltMaxAngleX={15} tiltMaxAngleY={15} perspective={1000} scale={1.05} transitionSpeed={1000} style={{ width: '100%', maxWidth: '400px', zIndex: 10, animation: 'float 6s ease-in-out infinite' }}>
+                 <div style={{ position: 'relative', width: '100%' }}>
+                   
+                   {/* Main Mockup Card */}
+                   <div style={{ background: 'rgba(20, 20, 25, 0.7)', backdropFilter: 'blur(20px)', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.08)', padding: '2rem', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(168, 85, 247, 0.2)', cursor: 'pointer', transition: 'all 0.3s ease' }} className="interactive-card">
+                     
+                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem', marginBottom: '1.5rem' }}>
+                       <span style={{ color: '#fff', fontWeight: 800, fontSize: '1.1rem' }}>Tracking: <span style={{ color: '#818cf8' }}>LM-8923K</span></span>
+                       <span className="pulse-badge" style={{ background: 'rgba(168, 85, 247, 0.15)', color: '#c084fc', padding: '0.3rem 0.8rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: 'bold' }}>IN TRANSIT</span>
+                     </div>
+
+                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                       {/* Progress Line */}
+                       <div style={{ position: 'relative', paddingLeft: '2rem' }}>
+                         <div style={{ position: 'absolute', left: '7px', top: '5px', bottom: '5px', width: '2px', background: 'linear-gradient(to bottom, #818cf8 50%, rgba(255,255,255,0.1) 50%)' }}></div>
+                         
+                         <div style={{ marginBottom: '1.5rem', position: 'relative' }} className="interactive-step">
+                           <div style={{ position: 'absolute', left: '-2rem', top: '2px', width: '16px', height: '16px', borderRadius: '50%', background: '#818cf8', border: '3px solid #141419', boxShadow: '0 0 10px #818cf8' }}></div>
+                           <h4 style={{ color: '#fff', fontSize: '0.95rem', marginBottom: '0.2rem' }}>Package Picked Up</h4>
+                           <p style={{ color: '#a1a1aa', fontSize: '0.8rem' }}>10:42 AM • Distribution Center Alpha</p>
+                         </div>
+
+                         <div style={{ position: 'relative' }} className="interactive-step">
+                           <div style={{ position: 'absolute', left: '-2rem', top: '2px', width: '16px', height: '16px', borderRadius: '50%', background: '#050505', border: '3px solid rgba(255,255,255,0.2)' }}></div>
+                           <h4 style={{ color: '#fff', fontSize: '0.95rem', marginBottom: '0.2rem' }}>Estimated Delivery</h4>
+                           <p style={{ color: '#a1a1aa', fontSize: '0.8rem' }}>2:30 PM • Destination Facility</p>
+                         </div>
+                       </div>
+                     </div>
+
+                   </div>
+
+                   {/* Floating Metric Pill 1 */}
+                   <div style={{ position: 'absolute', top: '-15px', right: '-10px', background: 'rgba(16, 185, 129, 0.15)', backdropFilter: 'blur(10px)', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '0.6rem 1rem', borderRadius: '16px', display: 'flex', alignItems: 'center', gap: '0.5rem', animation: 'float 5s ease-in-out infinite 1s' }} className="interactive-pill">
+                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 10px #10b981' }}></div>
+                     <span style={{ color: '#fff', fontSize: '0.8rem', fontWeight: 600 }}>99.8% On-Time</span>
+                   </div>
+
+                   {/* Floating Metric Pill 2 */}
+                   <div style={{ position: 'absolute', bottom: '-15px', left: '-10px', background: 'rgba(236, 72, 153, 0.15)', backdropFilter: 'blur(10px)', border: '1px solid rgba(236, 72, 153, 0.3)', padding: '0.6rem 1rem', borderRadius: '16px', display: 'flex', alignItems: 'center', gap: '0.5rem', animation: 'float 7s ease-in-out infinite 0.5s' }} className="interactive-pill">
+                     <span style={{ color: '#ec4899', fontSize: '1.1rem', fontWeight: 900 }}>42</span>
+                     <span style={{ color: '#fff', fontSize: '0.8rem', fontWeight: 600 }}>Active Agents</span>
+                   </div>
+
+                 </div>
+               </Tilt>
                
             </div>
           </div>

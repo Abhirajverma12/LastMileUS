@@ -1192,3 +1192,19 @@ input::placeholder { color: var(--text-muted); }
   .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   table { min-width: 700px; }
 }
+
+/* ══════════════ ADVANCED INTERACTIVITY ══════════════ */
+.interactive-card:hover { transform: translateY(-10px) scale(1.02); border-color: rgba(168, 85, 247, 0.4) !important; box-shadow: 0 30px 60px -10px rgba(0,0,0,0.8), 0 0 40px rgba(168, 85, 247, 0.3) !important; }
+.interactive-step { transition: transform 0.3s ease; cursor: default; }
+.interactive-step:hover { transform: translateX(10px); }
+.interactive-step:hover div { transform: scale(1.2); }
+.interactive-step div { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.interactive-pill { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: default; }
+.interactive-pill:hover { transform: scale(1.15) !important; z-index: 20; border-color: rgba(255,255,255,0.4) !important; }
+
+/* Enhanced Button Interactivity (Sweep Effect) */
+.btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s ease; z-index: 1; pointer-events: none; transform: skewX(-20deg); }
+.btn:hover::before { left: 150%; }
+.btn-primary, .btn-outline { position: relative; overflow: hidden; }
+.pulse-badge { animation: badge-pulse 2s infinite; }
+@keyframes badge-pulse { 0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(168, 85, 247, 0); } 100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); } }
