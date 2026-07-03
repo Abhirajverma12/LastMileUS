@@ -98,19 +98,43 @@ export default function LoginPage() {
             </form>
             <p className="auth-footer">Don't have an account? <Link to="/register">Register</Link></p>
             <div className="demo-creds">
-              <p style={{ color: '#fff', marginBottom: '0.75rem' }}><strong>🚀 Demo Credentials:</strong></p>
-              <div style={{ display: 'grid', gap: '0.5rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.25rem' }}>
-                  <span style={{ color: '#fff' }}>Admin</span>
-                  <span>admin@delivery.com / <strong>admin123</strong></span>
+              <p style={{ color: '#fff', marginBottom: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem' }}><strong>🚀 Demo Credentials:</strong></p>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {/* Admin */}
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ color: '#a1a1aa' }}>Admin:</span>
+                    <span style={{ color: '#fff' }}>admin@delivery.com</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.2rem' }}>
+                    <span style={{ color: '#a1a1aa' }}>Password:</span>
+                    <span style={{ color: '#fff' }}><strong>admin123</strong></span>
+                  </div>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.25rem' }}>
-                  <span style={{ color: '#fff' }}>Customer</span>
-                  <span>customer@delivery.com / <strong>customer123</strong></span>
+
+                {/* Customer */}
+                <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '1rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ color: '#a1a1aa' }}>Customer:</span>
+                    <span style={{ color: '#fff' }}>customer@delivery.com</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.2rem' }}>
+                    <span style={{ color: '#a1a1aa' }}>Password:</span>
+                    <span style={{ color: '#fff' }}><strong>customer123</strong></span>
+                  </div>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: '#fff' }}>Agent</span>
-                  <span>agent1@delivery.com / <strong>agent123</strong></span>
+
+                {/* Agent */}
+                <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '1rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ color: '#a1a1aa' }}>Agent:</span>
+                    <span style={{ color: '#fff' }}>agent1@delivery.com</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.2rem' }}>
+                    <span style={{ color: '#a1a1aa' }}>Password:</span>
+                    <span style={{ color: '#fff' }}><strong>agent123</strong></span>
+                  </div>
                 </div>
               </div>
             </div>
