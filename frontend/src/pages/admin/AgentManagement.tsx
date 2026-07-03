@@ -56,7 +56,7 @@ export default function AgentManagement() {
       <h1>Agent Management</h1>
 
       <div className="stats-grid" style={{ marginBottom: '1.5rem' }}>
-        <div className="stat-card glass-card"><p className="stat-label">Total Agents</p><p className="stat-value" style={{ color: '#667eea' }}>{agents.length}</p></div>
+        <div className="stat-card glass-card"><p className="stat-label">Total Agents</p><p className="stat-value" style={{ color: '#eab308' }}>{agents.length}</p></div>
         <div className="stat-card glass-card"><p className="stat-label">Available</p><p className="stat-value" style={{ color: '#38a169' }}>{agents.filter(a => a.status === 'AVAILABLE').length}</p></div>
         <div className="stat-card glass-card"><p className="stat-label">Busy</p><p className="stat-value" style={{ color: '#f6ad55' }}>{agents.filter(a => a.status === 'BUSY').length}</p></div>
         <div className="stat-card glass-card"><p className="stat-label">Offline</p><p className="stat-value" style={{ color: '#fc8181' }}>{agents.filter(a => a.status === 'OFFLINE').length}</p></div>

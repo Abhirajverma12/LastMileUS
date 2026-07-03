@@ -1,23 +1,22 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
-const NAV_ITEMS: Record<string, { label: string; path: string; icon: string }[]> = {
+const NAV_ITEMS: Record<string, { label: string; path: string }[]> = {
   CUSTOMER: [
-    { label: 'Dashboard', path: '/customer/dashboard', icon: '📊' },
-    { label: 'All Orders', path: '/customer/orders', icon: '📋' },
-    { label: 'New Order', path: '/customer/orders/new', icon: '📦' },
+    { label: 'Dashboard', path: '/customer/dashboard' },
+    { label: 'Orders', path: '/customer/orders' },
+    { label: 'New Order', path: '/customer/orders/new' },
   ],
   AGENT: [
-    { label: 'Dashboard', path: '/agent/dashboard', icon: '🚚' },
-    { label: 'All Orders', path: '/agent/orders', icon: '📋' },
+    { label: 'Dashboard', path: '/agent/dashboard' },
+    { label: 'Orders', path: '/agent/orders' },
   ],
   ADMIN: [
-    { label: 'Dashboard', path: '/admin/dashboard', icon: '📊' },
-    { label: 'All Orders', path: '/admin/orders', icon: '📋' },
-    { label: 'New Order', path: '/admin/orders/new', icon: '📦' },
-    { label: 'Zones & Areas', path: '/admin/zones', icon: '🗺️' },
-    { label: 'Rate Cards', path: '/admin/rate-cards', icon: '💰' },
-    { label: 'Agents', path: '/admin/agents', icon: '👤' },
+    { label: 'Dashboard', path: '/admin/dashboard' },
+    { label: 'Orders', path: '/admin/orders' },
+    { label: 'Zones', path: '/admin/zones' },
+    { label: 'Rates', path: '/admin/rate-cards' },
+    { label: 'Agents', path: '/admin/agents' },
   ],
 };
 
@@ -30,30 +29,27 @@ export default function Layout() {
 
   return (
     <div className="layout">
-      <aside className="sidebar">
-        <div className="sidebar-header">
-          <h2 className="sidebar-logo">🚀 LastMileUS</h2>
-          <p className="sidebar-role">{user?.role}</p>
+      <header className="top-navbar">
+        <div className="navbar-brand">
+          <h2 className="navbar-logo">LastMileUS</h2>
+          <span className="badge role-badge">{user?.role}</span>
         </div>
-        <nav className="sidebar-nav">
+        
+        <nav className="navbar-links">
           {items.map(item => (
             <NavLink key={item.path} to={item.path} className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-              <span className="nav-icon">{item.icon}</span>
-              <span>{item.label}</span>
+              <span className="nav-text">{item.label}</span>
             </NavLink>
           ))}
         </nav>
-        <div className="sidebar-footer">
-          <div className="user-info">
-            <div className="user-avatar">{user?.name?.charAt(0).toUpperCase()}</div>
-            <div>
-              <p className="user-name">{user?.name}</p>
-              <p className="user-email">{user?.email}</p>
-            </div>
+        
+        <div className="navbar-user">
+          <div className="user-details hide-on-mobile">
+            <p className="user-name">{user?.name || 'Admin User'}</p>
           </div>
-          <button className="btn btn-outline btn-sm" onClick={handleLogout}>Logout</button>
+          <button className="btn-logout" onClick={handleLogout}>Logout</button>
         </div>
-      </aside>
+      </header>
       <main className="main-content">
         <Outlet />
       </main>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { api } from '../../api/client';
 
 const STATUS_COLORS: Record<string, string> = {
-  PENDING: '#f6ad55', PICKED_UP: '#4299e1', IN_TRANSIT: '#9f7aea',
+  PENDING: '#f6ad55', PICKED_UP: '#4299e1', IN_TRANSIT: '#eab308',
   OUT_FOR_DELIVERY: '#48bb78', DELIVERED: '#38a169', FAILED: '#fc8181',
 };
 
@@ -50,7 +50,7 @@ export default function AdminDashboard() {
             onClick={() => navigate('/admin/orders')}
           >
             <p className="stat-label">📈 Total Orders</p>
-            <p className="stat-value" style={{ color: '#818cf8' }}>{totalOrders}</p>
+            <p className="stat-value" style={{ color: '#eab308' }}>{totalOrders}</p>
           </div>
           {Object.entries(STATUS_COLORS).map(([status, color]) => (
             <div 

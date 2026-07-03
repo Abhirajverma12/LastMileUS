@@ -3,7 +3,7 @@ import { TrackingEntry } from '../../types';
 const STATUS_CONFIG: Record<string, { color: string; icon: string }> = {
   PENDING: { color: '#f6ad55', icon: '⏳' },
   PICKED_UP: { color: '#4299e1', icon: '📥' },
-  IN_TRANSIT: { color: '#9f7aea', icon: '🚚' },
+  IN_TRANSIT: { color: '#eab308', icon: '🚚' },
   OUT_FOR_DELIVERY: { color: '#48bb78', icon: '🏃' },
   DELIVERED: { color: '#38a169', icon: '✅' },
   FAILED: { color: '#fc8181', icon: '❌' },

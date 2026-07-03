@@ -6,7 +6,7 @@ import { ApiResponse, Order } from '../../types';
 import TrackingTimeline from '../../components/common/TrackingTimeline';
 
 const STATUS_COLORS: Record<string, string> = {
-  PENDING: '#f6ad55', PICKED_UP: '#4299e1', IN_TRANSIT: '#9f7aea',
+  PENDING: '#f6ad55', PICKED_UP: '#4299e1', IN_TRANSIT: '#eab308',
   OUT_FOR_DELIVERY: '#48bb78', DELIVERED: '#38a169', FAILED: '#fc8181',
 };
 

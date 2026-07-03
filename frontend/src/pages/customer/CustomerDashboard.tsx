@@ -40,7 +40,7 @@ export default function CustomerDashboard() {
           onClick={() => navigate('/customer/orders')}
         >
           <p className="stat-label">Total Orders</p>
-          <p className="stat-value" style={{ color: '#667eea' }}>{stats.total}</p>
+          <p className="stat-value" style={{ color: '#eab308' }}>{stats.total}</p>
         </div>
         <div 
           className="stat-card glass-card interactive-card" 
@@ -57,7 +57,7 @@ export default function CustomerDashboard() {
           onClick={() => navigate('/customer/orders?status=IN_TRANSIT')}
         >
           <p className="stat-label">In Transit</p>
-          <p className="stat-value" style={{ color: '#9f7aea' }}>{stats.inTransit}</p>
+          <p className="stat-value" style={{ color: '#eab308' }}>{stats.inTransit}</p>
         </div>
         <div 
           className="stat-card glass-card interactive-card" 

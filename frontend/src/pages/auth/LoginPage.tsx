@@ -36,7 +36,7 @@ export default function LoginPage() {
   return (
     <div className="auth-split-layout">
       {/* Left Side: Hero Section */}
-      <div className="auth-hero" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)' }}>
+      <div className="auth-hero" style={{ background: 'linear-gradient(135deg, #050505 0%, #1a1500 100%)' }}>
         <div className="auth-hero-content animate-slide-in">
           <h1 className="auth-hero-title"><span>🚀</span> LastMileUS</h1>
           <p className="auth-hero-subtitle">
