@@ -8,7 +8,9 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { login, user } = useAuth();
+  const [step, setStep] = useState<'LOGIN' | 'VERIFY'>('LOGIN');
+  const [otp, setOtp] = useState('');
+  const { login, verifyOtp, user } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,7 +27,24 @@ export default function LoginPage() {
     setLoading(true);
     try {
       await login(email, password);
-      // Navigation is now handled by the useEffect watching the 'user' state
+    } catch (err: any) {
+      if (err.message.includes('VERIFICATION_REQUIRED') || err.message.toLowerCase().includes('verify')) {
+        setStep('VERIFY');
+        setError('Please enter the 6-digit code sent to your email.');
+      } else {
+        setError(err.message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleVerifySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+    try {
+      await verifyOtp(email, otp);
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -83,19 +102,42 @@ export default function LoginPage() {
               <p>Sign in to your dashboard</p>
             </div>
             {error && <div className="alert alert-error">{error}</div>}
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label>Email</label>
-                <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter your email" required />
-              </div>
-              <div className="form-group" style={{ marginTop: '0.5rem' }}>
-                <label>Password</label>
-                <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter your password" required />
-              </div>
-              <button type="submit" className="btn btn-primary btn-full" disabled={loading} style={{ marginTop: '1rem' }}>
-                {loading ? 'Signing in...' : 'Sign In'}
-              </button>
-            </form>
+            {step === 'LOGIN' ? (
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label>Email</label>
+                  <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter your email" required />
+                </div>
+                <div className="form-group" style={{ marginTop: '0.5rem' }}>
+                  <label>Password</label>
+                  <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter your password" required />
+                </div>
+                <button type="submit" className="btn btn-primary btn-full" disabled={loading} style={{ marginTop: '1rem' }}>
+                  {loading ? 'Signing in...' : 'Sign In'}
+                </button>
+              </form>
+            ) : (
+              <form onSubmit={handleVerifySubmit}>
+                <div className="form-group">
+                  <label>Verification Code</label>
+                  <input 
+                    type="text" 
+                    value={otp} 
+                    onChange={e => setOtp(e.target.value)} 
+                    placeholder="6-digit code" 
+                    maxLength={6}
+                    style={{ fontSize: '1.5rem', letterSpacing: '0.5rem', textAlign: 'center', padding: '1rem' }}
+                    required 
+                  />
+                </div>
+                <button type="submit" className="btn btn-primary btn-full" disabled={loading} style={{ marginTop: '1.25rem' }}>
+                  {loading ? 'Verifying...' : 'Verify & Login'}
+                </button>
+                <button type="button" onClick={() => { setStep('LOGIN'); setError(''); }} className="btn btn-full" style={{ marginTop: '0.5rem', background: 'transparent' }}>
+                  Cancel
+                </button>
+              </form>
+            )}
             <p className="auth-footer">Don't have an account? <Link to="/register">Register</Link></p>
             <div className="demo-creds">
               <p style={{ color: '#fff', marginBottom: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem' }}><strong>🚀 Demo Credentials:</strong></p>
