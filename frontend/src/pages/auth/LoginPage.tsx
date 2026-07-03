@@ -98,10 +98,21 @@ export default function LoginPage() {
             </form>
             <p className="auth-footer">Don't have an account? <Link to="/register">Register</Link></p>
             <div className="demo-creds">
-              <p style={{ color: '#fff', marginBottom: '0.5rem' }}><strong>Demo Credentials:</strong></p>
-              <p>Admin: admin@delivery.com / admin123</p>
-              <p>Customer: customer@delivery.com / customer123</p>
-              <p>Agent: agent1@delivery.com / agent123</p>
+              <p style={{ color: '#fff', marginBottom: '0.75rem' }}><strong>🚀 Demo Credentials:</strong></p>
+              <div style={{ display: 'grid', gap: '0.5rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.25rem' }}>
+                  <span style={{ color: '#fff' }}>Admin</span>
+                  <span>admin@delivery.com / <strong>admin123</strong></span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '0.25rem' }}>
+                  <span style={{ color: '#fff' }}>Customer</span>
+                  <span>customer@delivery.com / <strong>customer123</strong></span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ color: '#fff' }}>Agent</span>
+                  <span>agent1@delivery.com / <strong>agent123</strong></span>
+                </div>
+              </div>
             </div>
           </div>
         </Tilt>
