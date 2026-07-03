@@ -474,7 +474,7 @@ tr:last-child td { border-bottom: none; }
 /* ══════════════ FORMS ══════════════ */
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); /* Increased from 320px to give cards more breathing room */
   gap: 2.5rem;
 }
 
@@ -492,8 +492,8 @@ tr:last-child td { border-bottom: none; }
 }
 
 .form-group { display: flex; flex-direction: column; gap: 0.65rem; }
-.form-row { display: flex; gap: 1.5rem; }
-.form-row .form-group { flex: 1; }
+.form-row { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.form-row .form-group { flex: 1; min-width: 120px; } /* Prevent severe squishing */
 
 label {
   font-size: 0.8rem;
