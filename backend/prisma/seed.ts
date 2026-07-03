@@ -28,6 +28,7 @@ async function main() {
       password: passwordHash,
       phone: '9999999999',
       role: Role.ADMIN,
+      isVerified: true,
     },
   });
   console.log('✅ Admin created:', admin.email);
@@ -39,6 +40,7 @@ async function main() {
       password: customerHash,
       phone: '9876543210',
       role: Role.CUSTOMER,
+      isVerified: true,
     },
   });
   console.log('✅ Customer created:', customer.email);
@@ -50,6 +52,7 @@ async function main() {
       password: customerHash,
       phone: '9876543211',
       role: Role.CUSTOMER,
+      isVerified: true,
     },
   });
   console.log('✅ Customer 2 created:', customer2.email);
@@ -61,6 +64,7 @@ async function main() {
       password: agentHash,
       phone: '9111111111',
       role: Role.AGENT,
+      isVerified: true,
     },
   });
 
@@ -71,6 +75,7 @@ async function main() {
       password: agentHash,
       phone: '9222222222',
       role: Role.AGENT,
+      isVerified: true,
     },
   });
 
