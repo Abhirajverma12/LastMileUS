@@ -106,9 +106,10 @@ export async function login(email: string, password: string) {
     throw new Error('Invalid email or password');
   }
 
-  if (!user.isVerified) {
-    throw new Error('VERIFICATION_REQUIRED');
-  }
+  // Bypass email verification for demo purposes since Resend free tier blocks unverified emails
+  // if (!user.isVerified) {
+  //   throw new Error('VERIFICATION_REQUIRED');
+  // }
 
   const token = generateToken(user);
 

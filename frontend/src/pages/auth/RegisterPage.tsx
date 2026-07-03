@@ -28,7 +28,8 @@ export default function RegisterPage() {
     setLoading(true);
     try {
       await register(form.name, form.email, form.password, form.phone || undefined, form.role);
-      setStep('VERIFY');
+      // Bypass OTP for demo purposes, redirect straight to login
+      navigate('/login');
     } catch (err: any) {
       setError(err.message);
     } finally {
