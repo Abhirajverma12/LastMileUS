@@ -15,12 +15,13 @@ export async function getAllAgents(req: Request, res: Response, next: NextFuncti
 export async function updateStatus(req: Request, res: Response, next: NextFunction) {
   try {
     const { status } = req.body;
-    // Agents can only update their own status
-    const agent = await agentService.getAgentByUserId(req.user!.userId);
-    if (!agent) return ApiResponse.error(res, 'Agent profile not found', 404);
+    let agentId = req.params.id;
 
-    // Admin can update any agent
-    const agentId = req.user!.role === 'ADMIN' ? req.params.id : agent.id;
+    if (req.user!.role !== 'ADMIN') {
+      const agent = await agentService.getAgentByUserId(req.user!.userId);
+      if (!agent) return ApiResponse.error(res, 'Agent profile not found', 404);
+      agentId = agent.id;
+    }
 
     const updated = await agentService.updateAgentStatus(agentId, status);
     return ApiResponse.success(res, updated, 'Status updated');
@@ -32,10 +33,13 @@ export async function updateStatus(req: Request, res: Response, next: NextFuncti
 export async function updateLocation(req: Request, res: Response, next: NextFunction) {
   try {
     const { zoneId, currentArea } = req.body;
-    const agent = await agentService.getAgentByUserId(req.user!.userId);
-    if (!agent) return ApiResponse.error(res, 'Agent profile not found', 404);
+    let agentId = req.params.id;
 
-    const agentId = req.user!.role === 'ADMIN' ? req.params.id : agent.id;
+    if (req.user!.role !== 'ADMIN') {
+      const agent = await agentService.getAgentByUserId(req.user!.userId);
+      if (!agent) return ApiResponse.error(res, 'Agent profile not found', 404);
+      agentId = agent.id;
+    }
 
     const updated = await agentService.updateAgentLocation(agentId, zoneId, currentArea);
     return ApiResponse.success(res, updated, 'Location updated');

@@ -338,13 +338,15 @@ a:hover { color: var(--accent-secondary); text-shadow: 0 0 10px var(--accent-glo
 
 /* ══════════════ TABLE ══════════════ */
 .table-wrapper { 
-  overflow: hidden; 
+  overflow-x: auto;
+  overflow-y: hidden;
   border-radius: var(--radius-md); 
   border: 1px solid var(--border-glass); 
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  -webkit-overflow-scrolling: touch;
 }
 
-table { width: 100%; border-collapse: collapse; text-align: left; }
+table { width: 100%; min-width: 900px; border-collapse: collapse; text-align: left; }
 
 th {
   padding: 1.25rem 1.75rem;
@@ -833,9 +835,11 @@ input::placeholder { color: var(--text-muted); }
   gap: 2rem;
   margin-top: 3rem;
 }
+
 .feature-card-solid {
-  background: #18181c; /* solid dark gray */
-  border-radius: 16px;
+  background: rgba(20, 20, 25, 0.6);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
   padding: 2.5rem;
   height: 100%;
   display: flex;

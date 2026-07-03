@@ -95,6 +95,34 @@ export default function AgentDashboard() {
         {agent?.zone && <p style={{ marginTop: '0.5rem', color: 'var(--text-secondary)' }}>Zone: {agent.zone.name} | Area: {agent.currentArea || 'N/A'}</p>}
       </div>
 
+      {/* Stats Grid */}
+      <div className="stats-grid" style={{ marginBottom: '1.5rem' }}>
+        <div 
+          className="stat-card glass-card interactive-card" 
+          style={{ cursor: 'pointer' }} 
+          onClick={() => navigate('/agent/orders')}
+        >
+          <p className="stat-label">Total Assigned</p>
+          <p className="stat-value" style={{ color: '#667eea' }}>{orders.length}</p>
+        </div>
+        <div 
+          className="stat-card glass-card interactive-card" 
+          style={{ cursor: 'pointer' }} 
+          onClick={() => navigate('/agent/orders?status=PENDING')}
+        >
+          <p className="stat-label">Pending / Active</p>
+          <p className="stat-value" style={{ color: '#f6ad55' }}>{activeOrders.length}</p>
+        </div>
+        <div 
+          className="stat-card glass-card interactive-card" 
+          style={{ cursor: 'pointer' }} 
+          onClick={() => navigate('/agent/orders?status=DELIVERED')}
+        >
+          <p className="stat-label">Completed</p>
+          <p className="stat-value" style={{ color: '#38a169' }}>{completedOrders.length}</p>
+        </div>
+      </div>
+
       {/* Active Orders */}
       <div className="section">
         <h2>Active Deliveries ({activeOrders.length})</h2>
@@ -124,28 +152,6 @@ export default function AgentDashboard() {
           </div>
         )}
       </div>
-
-      {/* Completed */}
-      {completedOrders.length > 0 && (
-        <div className="section">
-          <h2>Completed ({completedOrders.length})</h2>
-          <div className="table-wrapper glass-card">
-            <table>
-              <thead><tr><th>Tracking ID</th><th>Route</th><th>Status</th><th>Date</th></tr></thead>
-              <tbody>
-                {completedOrders.map(o => (
-                  <tr key={o.id} onClick={() => navigate(`/agent/orders/${o.id}`)} className="clickable-row">
-                    <td><strong>{o.trackingId}</strong></td>
-                    <td>{o.pickupArea} → {o.dropArea}</td>
-                    <td><span className="badge" style={{ background: (STATUS_COLORS[o.status] || '#666') + '22', color: STATUS_COLORS[o.status] }}>{o.status}</span></td>
-                    <td>{new Date(o.createdAt).toLocaleDateString()}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

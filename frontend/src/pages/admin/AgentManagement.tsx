@@ -62,36 +62,38 @@ export default function AgentManagement() {
         <div className="stat-card glass-card"><p className="stat-label">Offline</p><p className="stat-value" style={{ color: '#fc8181' }}>{agents.filter(a => a.status === 'OFFLINE').length}</p></div>
       </div>
 
-      <div className="table-wrapper glass-card">
-        <table>
-          <thead><tr><th>Agent</th><th>Email</th><th>Phone</th><th>Zone</th><th>Area</th><th>Status</th><th>Actions</th></tr></thead>
+      <div className="glass-card" style={{ padding: '1.5rem 0', overflow: 'hidden' }}>
+        <div style={{ overflowX: 'auto', padding: '0 1.5rem' }}>
+          <table style={{ minWidth: '850px', width: '100%' }}>
+          <thead><tr><th>Agent</th><th>Status</th><th>Actions</th><th>Email</th><th>Phone</th><th>Zone</th><th>Area</th></tr></thead>
           <tbody>
             {agents.map(a => (
               <tr key={a.id}>
-                <td><strong>{a.user?.name}</strong></td>
-                <td>{a.user?.email}</td>
-                <td>{a.user?.phone || '—'}</td>
+                <td style={{ whiteSpace: 'nowrap' }}><strong>{a.user?.name}</strong></td>
+                <td><span className="badge" style={{ background: (STATUS_COLORS[a.status] || '#666') + '22', color: STATUS_COLORS[a.status], whiteSpace: 'nowrap' }}>{a.status}</span></td>
                 <td>
+                  <div className="btn-group" style={{ flexWrap: 'nowrap' }}>
+                    {['AVAILABLE', 'BUSY', 'OFFLINE'].filter(s => s !== a.status).map(s => (
+                      <button key={s} className="btn btn-xs btn-outline" onClick={() => updateStatus(a.id, s)}
+                        disabled={actionLoading === `${a.id}-status`} style={{ whiteSpace: 'nowrap' }}>{s}</button>
+                    ))}
+                  </div>
+                </td>
+                <td style={{ whiteSpace: 'nowrap' }}>{a.user?.email}</td>
+                <td style={{ whiteSpace: 'nowrap' }}>{a.user?.phone || '—'}</td>
+                <td style={{ minWidth: '150px' }}>
                   <select value={a.zoneId || ''} onChange={e => updateZone(a.id, e.target.value)}
-                    disabled={actionLoading === `${a.id}-zone`} className="inline-select">
+                    disabled={actionLoading === `${a.id}-zone`} className="inline-select" style={{ width: '100%' }}>
                     <option value="">Unassigned</option>
                     {zones.map(z => <option key={z.id} value={z.id}>{z.name}</option>)}
                   </select>
                 </td>
-                <td>{a.currentArea || '—'}</td>
-                <td><span className="badge" style={{ background: (STATUS_COLORS[a.status] || '#666') + '22', color: STATUS_COLORS[a.status] }}>{a.status}</span></td>
-                <td>
-                  <div className="btn-group">
-                    {['AVAILABLE', 'BUSY', 'OFFLINE'].filter(s => s !== a.status).map(s => (
-                      <button key={s} className="btn btn-xs btn-outline" onClick={() => updateStatus(a.id, s)}
-                        disabled={actionLoading === `${a.id}-status`}>{s}</button>
-                    ))}
-                  </div>
-                </td>
+                <td style={{ whiteSpace: 'nowrap' }}>{a.currentArea || '—'}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );

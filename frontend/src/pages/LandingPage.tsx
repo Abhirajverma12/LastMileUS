@@ -144,40 +144,52 @@ export default function LandingPage() {
         </div>
 
         {/* Bottom Features Section */}
-        <div className="landing-features-section">
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#fff', marginBottom: '1rem' }}>Engineered for Scale</h2>
-            <p style={{ color: '#a1a1aa', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
-              Designed to handle thousands of concurrent import, export, and transit workflows effortlessly.
+        <div className="landing-features-section" style={{ position: 'relative', overflow: 'hidden' }}>
+          {/* Colorful Background Orbs */}
+          <div style={{ position: 'absolute', top: '-20%', left: '-10%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%)', filter: 'blur(40px)', zIndex: 0 }}></div>
+          <div style={{ position: 'absolute', bottom: '-20%', right: '-10%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%)', filter: 'blur(40px)', zIndex: 0 }}></div>
+
+          <div style={{ textAlign: 'center', marginBottom: '4rem', position: 'relative', zIndex: 1 }}>
+            <h2 style={{ 
+              fontSize: '3rem', 
+              fontWeight: 900, 
+              marginBottom: '1.5rem',
+              background: 'var(--accent-gradient)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              filter: 'drop-shadow(0 4px 15px rgba(168, 85, 247, 0.4))'
+            }}>Engineered for Scale</h2>
+            <p style={{ color: '#a1a1aa', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto', lineHeight: 1.8 }}>
+              Designed to handle thousands of concurrent import, export, and transit workflows effortlessly with military-grade precision.
             </p>
           </div>
           
-          <div className="feature-cards-grid">
-            <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} glareEnable glareMaxOpacity={0.05}>
-              <div className="feature-card-solid">
-                <div className="feature-icon-solid">🗺️</div>
-                <h3 style={{ fontSize: '1.3rem', color: '#fff', marginBottom: '1rem' }}>Algorithmic Route Optimization</h3>
-                <p style={{ color: '#a1a1aa', fontSize: '0.95rem', lineHeight: '1.6' }}>
+          <div className="feature-cards-grid" style={{ position: 'relative', zIndex: 1 }}>
+            <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} glareEnable glareMaxOpacity={0.15} glareColor="#38bdf8" perspective={1000} scale={1.02}>
+              <div className="feature-card-solid" style={{ background: 'linear-gradient(145deg, rgba(20,20,25,0.8) 0%, rgba(56, 189, 248, 0.1) 100%)', border: '1px solid rgba(56, 189, 248, 0.2)', boxShadow: '0 15px 35px rgba(0,0,0,0.4), inset 0 0 20px rgba(56, 189, 248, 0.05)' }}>
+                <div className="feature-icon-solid" style={{ background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(56, 189, 248, 0.05))', borderColor: 'rgba(56, 189, 248, 0.4)', boxShadow: '0 0 20px rgba(56, 189, 248, 0.3)' }}>🗺️</div>
+                <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '1rem', fontWeight: 800 }}>Algorithmic Route Optimization</h3>
+                <p style={{ color: '#a1a1aa', fontSize: '1rem', lineHeight: '1.6' }}>
                   Instantly computes the most efficient transit paths based on real-time traffic data, regional topology, and vehicle proximity to minimize overhead.
                 </p>
               </div>
             </Tilt>
 
-            <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} glareEnable glareMaxOpacity={0.05}>
-              <div className="feature-card-solid">
-                <div className="feature-icon-solid">🤖</div>
-                <h3 style={{ fontSize: '1.3rem', color: '#fff', marginBottom: '1rem' }}>Automated Fleet Dispatch</h3>
-                <p style={{ color: '#a1a1aa', fontSize: '0.95rem', lineHeight: '1.6' }}>
+            <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} glareEnable glareMaxOpacity={0.15} glareColor="#a855f7" perspective={1000} scale={1.02}>
+              <div className="feature-card-solid" style={{ background: 'linear-gradient(145deg, rgba(20,20,25,0.8) 0%, rgba(168, 85, 247, 0.1) 100%)', border: '1px solid rgba(168, 85, 247, 0.2)', boxShadow: '0 15px 35px rgba(0,0,0,0.4), inset 0 0 20px rgba(168, 85, 247, 0.05)' }}>
+                <div className="feature-icon-solid" style={{ background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(168, 85, 247, 0.05))', borderColor: 'rgba(168, 85, 247, 0.4)', boxShadow: '0 0 20px rgba(168, 85, 247, 0.3)' }}>🤖</div>
+                <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '1rem', fontWeight: 800 }}>Automated Fleet Dispatch</h3>
+                <p style={{ color: '#a1a1aa', fontSize: '1rem', lineHeight: '1.6' }}>
                   Eliminate manual oversight. Our engine autonomously pairs high-priority consignments with the optimal agents for maximum fulfillment speed.
                 </p>
               </div>
             </Tilt>
 
-            <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} glareEnable glareMaxOpacity={0.05}>
-              <div className="feature-card-solid">
-                <div className="feature-icon-solid">🛡️</div>
-                <h3 style={{ fontSize: '1.3rem', color: '#fff', marginBottom: '1rem' }}>Cryptographic Audit Trails</h3>
-                <p style={{ color: '#a1a1aa', fontSize: '0.95rem', lineHeight: '1.6' }}>
+            <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} glareEnable glareMaxOpacity={0.15} glareColor="#ec4899" perspective={1000} scale={1.02}>
+              <div className="feature-card-solid" style={{ background: 'linear-gradient(145deg, rgba(20,20,25,0.8) 0%, rgba(236, 72, 153, 0.1) 100%)', border: '1px solid rgba(236, 72, 153, 0.2)', boxShadow: '0 15px 35px rgba(0,0,0,0.4), inset 0 0 20px rgba(236, 72, 153, 0.05)' }}>
+                <div className="feature-icon-solid" style={{ background: 'linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(236, 72, 153, 0.05))', borderColor: 'rgba(236, 72, 153, 0.4)', boxShadow: '0 0 20px rgba(236, 72, 153, 0.3)' }}>🛡️</div>
+                <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '1rem', fontWeight: 800 }}>Cryptographic Audit Trails</h3>
+                <p style={{ color: '#a1a1aa', fontSize: '1rem', lineHeight: '1.6' }}>
                   Every cargo scan, transit update, and proof-of-delivery is securely logged via an append-only architecture, ensuring absolute transparency.
                 </p>
               </div>
