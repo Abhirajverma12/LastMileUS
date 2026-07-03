@@ -48,36 +48,79 @@ export default function LandingPage() {
         {/* Top Split Section */}
         <div className="landing-top-section">
           <div className="landing-text-col">
-            <div className="badge-outline" style={{ color: '#a855f7', borderColor: 'rgba(168, 85, 247, 0.3)', marginBottom: '1.5rem', display: 'inline-block', padding: '0.25rem 1rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: 'bold', letterSpacing: '1px' }}>
-              SMART LOGISTICS
+            <div className="badge-outline" style={{ color: '#c084fc', borderColor: 'rgba(192, 132, 252, 0.3)', marginBottom: '1.5rem', display: 'inline-block', padding: '0.35rem 1.25rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: 'bold', letterSpacing: '1.5px', background: 'rgba(192, 132, 252, 0.05)' }}>
+              ✦ SMART LOGISTICS
             </div>
-            <h1 className="landing-headline">
+            <h1 className="landing-headline" style={{ 
+              fontSize: '4.5rem', 
+              fontWeight: 900, 
+              lineHeight: 1.1,
+              background: 'var(--accent-gradient)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              filter: 'drop-shadow(0 4px 20px rgba(168, 85, 247, 0.3))'
+            }}>
               Next-Gen Last-Mile<br />Delivery Tracking
             </h1>
-            <p className="landing-sub-headline">
-              An intelligent, automated last-mile logistics platform for LastMileUS. Experience instant zone-based rate calculation, proximity-optimized agent auto-assignment, and an immutable, fully auditable timeline history for every delivery attempt.
+            <p className="landing-sub-headline" style={{ fontSize: '1.25rem', color: '#a1a1aa', maxWidth: '90%', lineHeight: 1.6, marginTop: '1.5rem' }}>
+              An intelligent, automated logistics platform. Experience instant zone-based rate calculation, proximity-optimized agent auto-assignment, and an immutable, fully auditable timeline history for every delivery attempt.
             </p>
-            <div style={{ marginTop: '2rem' }}>
-               <Link to={user ? getDashboardLink() : '/login'} className="btn" style={{ background: '#818cf8', color: '#000', borderRadius: '8px', padding: '0.85rem 2rem', fontSize: '1rem', fontWeight: 700 }}>
-                 {user ? 'Go to Dashboard' : 'Get Started'}
+            <div style={{ marginTop: '2.5rem', display: 'flex', gap: '1.5rem' }}>
+               <Link to={user ? getDashboardLink() : '/login'} className="btn" style={{ 
+                 background: 'var(--accent-gradient)', 
+                 color: '#fff', 
+                 borderRadius: '8px', 
+                 padding: '1rem 2.5rem', 
+                 fontSize: '1.1rem', 
+                 fontWeight: 800,
+                 boxShadow: '0 10px 25px rgba(168, 85, 247, 0.4)',
+                 border: 'none',
+                 transition: 'all 0.3s ease'
+               }}>
+                 {user ? 'Go to Dashboard →' : 'Get Started Now →'}
                </Link>
             </div>
           </div>
 
           <div className="landing-visual-col">
-            <div className="visual-container" style={{ position: 'relative', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-               <div style={{
-                 width: '300px', height: '300px',
-                 borderRadius: '50%',
-                 background: 'radial-gradient(circle at 30% 30%, #818cf8, #a855f7, #0f172a)',
-                 boxShadow: '0 0 80px rgba(168, 85, 247, 0.4), inset -20px -20px 40px rgba(0,0,0,0.5)',
-                 animation: 'float 6s infinite ease-in-out'
-               }}></div>
-               <div style={{
-                 position: 'absolute', width: '400px', height: '400px',
-                 borderRadius: '50%', border: '1px solid rgba(168, 85, 247, 0.2)',
-                 animation: 'pulse-glow 4s infinite alternate'
-               }}></div>
+            <div className="visual-container" style={{ position: 'relative', height: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center', perspective: '1000px' }}>
+               
+               {/* Background Glow */}
+               <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 60%)', animation: 'pulse-glow 6s infinite alternate', zIndex: 0 }}></div>
+               
+               {/* Floating Dashboard Card 1 (Top Right) */}
+               <Tilt tiltMaxAngleX={15} tiltMaxAngleY={15} scale={1.05} style={{ position: 'absolute', zIndex: 10, right: '5%', top: '10%' }}>
+                 <div style={{ width: '280px', background: 'rgba(15,15,20,0.7)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '20px', padding: '1.5rem', boxShadow: '0 20px 40px rgba(0,0,0,0.6)' }}>
+                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                     <span style={{ color: '#a1a1aa', fontSize: '0.85rem', fontWeight: 600 }}>Active Agents</span>
+                     <span style={{ color: '#10b981', fontSize: '0.85rem', fontWeight: 700 }}>● Live</span>
+                   </div>
+                   <div style={{ fontSize: '2.5rem', fontWeight: 900, color: '#fff' }}>124</div>
+                   <div style={{ height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px', marginTop: '1rem', overflow: 'hidden' }}>
+                     <div style={{ width: '75%', height: '100%', background: 'linear-gradient(90deg, #6366f1, #c084fc)' }}></div>
+                   </div>
+                 </div>
+               </Tilt>
+
+               {/* Floating Dashboard Card 2 (Bottom Left) */}
+               <Tilt tiltMaxAngleX={15} tiltMaxAngleY={15} scale={1.05} style={{ position: 'absolute', zIndex: 15, left: '0%', bottom: '15%' }}>
+                 <div style={{ width: '340px', background: 'rgba(20,20,28,0.85)', backdropFilter: 'blur(30px)', border: '1px solid rgba(168,85,247,0.3)', borderRadius: '20px', padding: '1.75rem', boxShadow: '0 30px 60px rgba(0,0,0,0.8), 0 0 30px rgba(168,85,247,0.15)' }}>
+                   <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+                     <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(168,85,247,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', border: '1px solid rgba(168,85,247,0.3)' }}>📦</div>
+                     <div>
+                        <div style={{ color: '#fff', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.2rem' }}>Order #TRK-982</div>
+                        <div style={{ color: '#a1a1aa', fontSize: '0.85rem' }}>Auto-assigned (0.2km away)</div>
+                     </div>
+                   </div>
+                   <div style={{ marginTop: '1.5rem', display: 'flex', gap: '0.75rem' }}>
+                      <div style={{ flex: 1, height: '40px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}></div>
+                      <div style={{ flex: 2, height: '40px', background: 'rgba(168,85,247,0.1)', borderRadius: '8px', border: '1px solid rgba(168,85,247,0.2)' }}></div>
+                   </div>
+                 </div>
+               </Tilt>
+
+               {/* Central Abstract Ring */}
+               <div style={{ position: 'absolute', zIndex: 5, width: '300px', height: '300px', borderRadius: '50%', border: '2px dashed rgba(99, 102, 241, 0.3)', animation: 'spin 20s linear infinite' }}></div>
             </div>
           </div>
         </div>

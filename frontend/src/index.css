@@ -83,6 +83,11 @@ a:hover { color: var(--accent-secondary); text-shadow: 0 0 10px var(--accent-glo
   100% { filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.4)); }
 }
 
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 @keyframes slideIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
