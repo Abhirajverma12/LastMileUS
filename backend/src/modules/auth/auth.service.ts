@@ -62,6 +62,9 @@ export async function register(
   `;
   
   await sendEmail(user.email, 'Verify your LastMileUS account', html);
+  
+  // Print OTP to terminal for local testing
+  console.log(`\n\n=== 🔐 OTP FOR ${user.email}: ${otp} ===\n\n`);
 
   return { message: 'Registration successful. OTP sent to email.' };
 }
@@ -106,10 +109,10 @@ export async function login(email: string, password: string) {
     throw new Error('Invalid email or password');
   }
 
-  // Bypass email verification for demo purposes since Resend free tier blocks unverified emails
-  // if (!user.isVerified) {
-  //   throw new Error('VERIFICATION_REQUIRED');
-  // }
+  // Enforce email verification
+  if (!user.isVerified) {
+    throw new Error('VERIFICATION_REQUIRED');
+  }
 
   const token = generateToken(user);
 
