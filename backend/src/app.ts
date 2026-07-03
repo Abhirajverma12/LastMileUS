@@ -18,7 +18,7 @@ const app = express();
 // Security & parsing middleware
 app.use(helmet());
 app.use(cors({
-  origin: env.FRONTEND_URL,
+  origin: true, // Dynamically allow any origin (great for prototyping/assignments)
   credentials: true,
 }));
 app.use(morgan('dev'));
