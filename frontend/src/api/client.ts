@@ -12,7 +12,7 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
   const data = await res.json();
 
   if (!res.ok) {
-    if (res.status === 401) {
+    if (res.status === 401 && !endpoint.includes('/login')) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.href = '/login';
