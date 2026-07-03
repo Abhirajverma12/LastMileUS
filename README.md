@@ -147,8 +147,26 @@ See `system_design.md` in the root folder for a comprehensive architectural brea
 └── system_design.md  # Full architectural specification
 ```
 
-## Notifications
-Order state transitions trigger the `notification.service.ts`. Currently configured to log mock emails to the console, but structured to accept Resend/SendGrid adapters.
+## Notifications & Email Verification
+Order state transitions and **New User Registrations (OTP verification)** trigger the built-in email service. 
+
+By default (for local testing), the system prints OTP codes directly to the backend console. However, it is fully production-ready to send real emails to users' inboxes.
+
+To activate real emails, simply add your credentials to `backend/.env`:
+
+**Option A: Using Resend (Recommended)**
+```env
+RESEND_API_KEY=re_your_api_key_here
+```
+
+**Option B: Using standard Gmail / SMTP**
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-16-digit-app-password
+SMTP_FROM=your-email@gmail.com
+```
 
 ## Submission Checklist
 - [x] Complete source (backend + frontend)
