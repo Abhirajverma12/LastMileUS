@@ -54,8 +54,7 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section style={{ 
-        padding: '12rem 2rem 6rem', 
+      <section className="landing-hero" style={{ 
         textAlign: 'center', 
         position: 'relative',
         display: 'flex',
@@ -135,8 +134,8 @@ export default function LandingPage() {
                 <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#22c55e' }}></div>
               </div>
               {/* Fake UI Body */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 3fr', gap: '1rem', height: '500px' }}>
-                <div style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '8px', padding: '1rem' }}>
+              <div className="mock-ui-grid" style={{ height: '500px' }}>
+                <div className="mock-sidebar" style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '8px', padding: '1rem' }}>
                   <div style={{ height: '30px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', marginBottom: '1rem' }}></div>
                   <div style={{ height: '20px', width: '70%', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', marginBottom: '0.5rem' }}></div>
                   <div style={{ height: '20px', width: '80%', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', marginBottom: '0.5rem' }}></div>
@@ -208,7 +207,7 @@ export default function LandingPage() {
                      </svg>
 
                      {/* Floating UI Pill over the map */}
-                     <div style={{ position: 'absolute', top: '190px', left: '380px', background: 'rgba(10,10,12,0.85)', border: '1px solid rgba(234,179,8,0.5)', borderRadius: '999px', padding: '0.5rem 1rem', display: 'flex', alignItems: 'center', gap: '0.6rem', backdropFilter: 'blur(8px)', boxShadow: '0 10px 20px rgba(0,0,0,0.5), 0 0 15px rgba(234,179,8,0.2)' }}>
+                     <div className="mock-floating-pill" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', background: 'rgba(10,10,12,0.85)', border: '1px solid rgba(234,179,8,0.5)', borderRadius: '999px', padding: '0.5rem 1rem', display: 'flex', alignItems: 'center', gap: '0.6rem', backdropFilter: 'blur(8px)', boxShadow: '0 10px 20px rgba(0,0,0,0.5), 0 0 15px rgba(234,179,8,0.2)' }}>
                         <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#eab308', boxShadow: '0 0 10px #eab308' }}></div>
                         <span style={{ color: '#fff', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.5px' }}>AGENT IN TRANSIT</span>
                      </div>
@@ -222,7 +221,7 @@ export default function LandingPage() {
 
       {/* Metrics Banner */}
       <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(255,255,255,0.01)', padding: '4rem 2rem' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', textAlign: 'center' }}>
+        <div className="metrics-grid" style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
           <div>
             <div style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--accent-primary)', marginBottom: '0.5rem' }}>1M+</div>
             <div style={{ color: '#a1a1aa', fontWeight: 600 }}>Deliveries Tracked</div>
@@ -251,7 +250,7 @@ export default function LandingPage() {
           </p>
         </div>
         
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+        <div className="features-grid" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           {/* Feature 1 */}
           <div style={{ background: 'rgba(255,255,255,0.03)', padding: '3rem 2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', transition: 'transform 0.3s ease, border-color 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.borderColor = 'var(--accent-primary)'} onMouseOut={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'}>
             <div style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>🗺️</div>
@@ -279,7 +278,7 @@ export default function LandingPage() {
           <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
             <h2 style={{ fontSize: '3rem', fontWeight: 900, color: '#fff', marginBottom: '1.5rem' }}>How it Works</h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '4rem', position: 'relative' }}>
+          <div className="workflow-grid" style={{ position: 'relative' }}>
             {/* Connecting Line */}
             <div style={{ position: 'absolute', top: '3rem', left: '10%', right: '10%', height: '2px', background: 'rgba(255,255,255,0.1)', zIndex: 0 }}></div>
             
@@ -325,7 +324,7 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer style={{ borderTop: '1px solid rgba(255,255,255,0.05)', padding: '4rem 2rem 2rem', background: '#050505' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', gap: '3rem', marginBottom: '4rem' }}>
+        <div className="footer-grid" style={{ maxWidth: '1200px', margin: '0 auto', marginBottom: '4rem' }}>
           <div>
             <div className="landing-logo" style={{ fontSize: '1.5rem', fontWeight: 900, display: 'flex', gap: '0.2rem', marginBottom: '1.5rem' }}>
               <span style={{ color: 'var(--accent-primary)' }}>LastMile</span><span style={{ color: '#fff' }}>US</span>
