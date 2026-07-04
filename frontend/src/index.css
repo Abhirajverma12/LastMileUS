@@ -1195,6 +1195,7 @@ input::placeholder { color: var(--text-muted); }
 .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 .workflow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem; }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; }
+.mock-ui-grid { display: grid; grid-template-columns: 1fr 3fr; gap: 1rem; }
 
 /* Tablet (Max 1024px) */
 @media (max-width: 1024px) {
@@ -1206,7 +1207,7 @@ input::placeholder { color: var(--text-muted); }
 /* Mobile (Max 768px) */
 @media (max-width: 768px) {
   /* Mobile Navbar Fixes */
-  .landing-navbar { padding: 1rem 1.5rem !important; flex-direction: column !important; gap: 1rem !important; background: rgba(10, 10, 12, 0.95) !important; }
+  .landing-navbar { padding: 1rem 1.5rem !important; flex-direction: column !important; gap: 1rem !important; background: transparent !important; }
   .landing-nav-links { width: 100% !important; flex-direction: column !important; gap: 1rem !important; }
   .landing-nav-links a { width: 100% !important; text-align: center !important; }
   
@@ -1232,5 +1233,8 @@ input::placeholder { color: var(--text-muted); }
   /* Mock UI Fixes */
   .mock-ui-grid { display: flex !important; flex-direction: column !important; height: auto !important; }
   .mock-sidebar { display: none !important; } /* Hide the sidebar part of the mockup to save space */
-  .mock-floating-pill { position: relative !important; top: auto !important; left: auto !important; transform: none !important; margin: 1rem auto; width: fit-content; }
+  .mock-top-metrics { grid-template-columns: 1fr !important; }
+  
+  .mock-map-container { min-height: 250px !important; }
+  .mock-floating-pill { position: absolute !important; top: auto !important; bottom: 1.5rem !important; left: 50% !important; transform: translateX(-50%) !important; width: fit-content; }
 }
