@@ -6,7 +6,14 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('🌱 Seeding database...');
 
-  // Clean existing data (order matters due to FK constraints)
+  // SAFETY CHECK: Prevent wiping data if already seeded
+  const adminExists = await prisma.user.findFirst({ where: { email: 'admin@delivery.com' } });
+  if (adminExists) {
+    console.log('✅ Database is already seeded. Skipping to prevent data loss.');
+    return;
+  }
+
+  // Clean existing data only if starting fresh
   await prisma.notification.deleteMany();
   await prisma.trackingHistory.deleteMany();
   await prisma.order.deleteMany();
