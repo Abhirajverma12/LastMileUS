@@ -20,7 +20,7 @@ export async function sendEmail(to: string, subject: string, html: string): Prom
     if (resend) {
       // Use Resend
       await resend.emails.send({
-        from: 'LastMileUS <onboarding@resend.dev>', // Replace with custom domain in production
+        from: 'LastMileUS <support@lastmileus.online>',
         to,
         subject,
         html,
