@@ -1099,24 +1099,40 @@ input::placeholder { color: var(--text-muted); }
   /* Layout & Top Navbar */
   .layout { overflow-x: hidden; width: 100vw; max-width: 100vw; }
   .top-navbar {
-    padding: 0.75rem 1rem;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: center;
   }
-  .navbar-brand { flex: 1; min-width: 0; flex-wrap: wrap; gap: 0.5rem; }
-  .navbar-logo { font-size: 1.15rem; }
+  .navbar-brand { 
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    flex: 1; 
+    min-width: 0; 
+    flex-wrap: nowrap; 
+    gap: 0.5rem; 
+  }
+  .navbar-logo { font-size: 1.25rem; }
   .role-badge { font-size: 0.65rem; padding: 0.2rem 0.5rem; }
+  .navbar-user { 
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    flex: 0; 
+  }
   .navbar-links {
-    order: 3;
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
     width: 100%;
     margin: 0;
     justify-content: flex-start;
     overflow-x: auto;
     padding-bottom: 0.5rem;
+    gap: 1.5rem;
   }
   .navbar-links::-webkit-scrollbar { height: 4px; }
   .navbar-links::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
-  .navbar-user { flex: 0; }
   .btn-logout { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
   .hide-on-mobile { display: none; }
   .main-content { 
