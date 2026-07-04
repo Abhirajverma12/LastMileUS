@@ -168,11 +168,4 @@ SMTP_PASS=your-16-digit-app-password
 SMTP_FROM=your-email@gmail.com
 ```
 
-## Submission Checklist
-- [x] Complete source (backend + frontend)
-- [x] README with setup, API docs, schema, rate logic
-- [x] OTP-based secure authentication
-- [x] `.gitignore` excludes `.env`, `node_modules`
-- [x] Integration testing suite
-- [x] Demo seed data included
-- [x] Auto-deployment blueprints provided
+
