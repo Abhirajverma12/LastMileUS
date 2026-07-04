@@ -104,17 +104,18 @@ export default function LandingPage() {
            }}>
              {user ? 'Launch Hub →' : 'Start Free Trial →'}
            </Link>
-           <Link to="#features" className="btn btn-outline" style={{ 
+           <a href="#features" className="btn btn-outline" style={{ 
              background: 'rgba(255,255,255,0.03)', 
              color: '#fff', 
              borderRadius: '8px', 
              padding: '1rem 2.5rem', 
              fontSize: '1.1rem', 
              fontWeight: 600,
-             border: '1px solid rgba(255,255,255,0.1)'
+             border: '1px solid rgba(255,255,255,0.1)',
+             textDecoration: 'none'
            }}>
              Explore Platform
-           </Link>
+           </a>
         </div>
 
         {/* Dashboard Mockup Showcase */}
