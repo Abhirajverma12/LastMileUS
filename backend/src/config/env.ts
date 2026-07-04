@@ -13,4 +13,5 @@ export const env = {
   SMTP_PASS: process.env.SMTP_PASS || '',
   SMTP_FROM: process.env.SMTP_FROM || 'noreply@delivery.com',
   NODE_ENV: process.env.NODE_ENV || 'development',
+  RESEND_API_KEY: process.env.RESEND_API_KEY || '',
 };
