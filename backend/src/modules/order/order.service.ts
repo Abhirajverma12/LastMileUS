@@ -111,6 +111,16 @@ export async function createOrder(
     return newOrder;
   });
 
+  // Try auto-assignment immediately
+  if (order.pickupZoneId) {
+    try {
+      const agent = await findNearestAvailableAgent(order.pickupZoneId);
+      if (agent) await assignAgentToOrder(order.id, agent.id);
+    } catch {
+      // Non-critical, leave pending if no agents available
+    }
+  }
+
   // Non-blocking notification
   sendOrderNotification(order.id, OrderStatus.PENDING).catch(() => {});
 
