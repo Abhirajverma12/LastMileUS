@@ -167,10 +167,10 @@ export default function LoginPage() {
                   </div>
                 </div>
 
-                {/* Agent */}
+                {/* Agent 1 */}
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '1rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: '#a1a1aa' }}>Agent:</span>
+                    <span style={{ color: '#a1a1aa' }}>Agent 1:</span>
                     <span style={{ color: '#fff' }}>agent1@delivery.com</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.2rem' }}>
@@ -178,6 +178,19 @@ export default function LoginPage() {
                     <span style={{ color: '#fff' }}><strong>agent123</strong></span>
                   </div>
                 </div>
+
+                {/* Agent 2 */}
+                <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '1rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ color: '#a1a1aa' }}>Agent 2:</span>
+                    <span style={{ color: '#fff' }}>agent2@delivery.com</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.2rem' }}>
+                    <span style={{ color: '#a1a1aa' }}>Password:</span>
+                    <span style={{ color: '#fff' }}><strong>agent123</strong></span>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>

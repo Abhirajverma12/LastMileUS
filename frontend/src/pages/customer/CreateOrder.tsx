@@ -5,11 +5,8 @@ import { api } from '../../api/client';
 import { ApiResponse, ChargeBreakdown } from '../../types';
 
 const PRESET_ADDRESSES = [
-  "Central Hub, Block A, Connaught Place, New Delhi",
-  "South Warehouse, 4th Block, Koramangala, Bangalore",
-  "North Distribution Center, Sector 14, Gurugram",
-  "East Sorting Facility, Salt Lake Sector V, Kolkata",
-  "West Transit Hub, MIDC, Andheri East, Mumbai",
+  "Central Hub, Block A, Connaught Place, New Delhi (North Zone)",
+  "South Warehouse, 4th Block, Koramangala, Bangalore (South Zone)",
 ];
 
 const PRESET_PACKAGES = [
@@ -169,6 +166,22 @@ export default function CreateOrder() {
       {error && <div className="alert alert-error">{error}</div>}
       {success && <div className="alert alert-success">{success}</div>}
 
+      <div style={{ background: 'rgba(255,200,0,0.05)', border: '1px solid rgba(255,200,0,0.2)', padding: '1rem 1.5rem', borderRadius: '8px', marginBottom: '2rem' }}>
+        <p style={{ color: '#fff', marginBottom: '0.5rem', fontSize: '1rem' }}><strong>📍 Sample addresses (from seed data)</strong></p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
+          <div>
+            <span style={{ color: '#fff' }}>Central Hub, Block A, Connaught Place, New Delhi (North Zone)</span>
+          </div>
+          <div>
+            <span style={{ color: '#fff' }}>South Warehouse, 4th Block, Koramangala, Bangalore (South Zone)</span>
+          </div>
+        </div>
+        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem', marginTop: '0.75rem', fontStyle: 'italic' }}>
+          💡 Tip: Selecting these addresses from the dropdown will automatically fill the Area and Pincode!
+        </p>
+      </div>
+
+
       <div className="form-grid">
         <div className="form-section glass-card">
           <h3>📍 Pickup Details</h3>
@@ -177,10 +190,18 @@ export default function CreateOrder() {
             <select 
               value={PRESET_ADDRESSES.includes(form.pickupAddress) ? form.pickupAddress : (form.pickupAddress === '' ? '' : 'Custom')}
               onChange={e => {
-                if (e.target.value !== 'Custom') {
-                  update('pickupAddress', e.target.value);
+                const val = e.target.value;
+                if (val !== 'Custom') {
+                  update('pickupAddress', val);
+                  const matchedArea = areas.find(a => val.includes(a.name));
+                  if (matchedArea) {
+                    // Have to use setForm directly because multiple update() calls in same tick might overwrite state
+                    setForm(f => ({ ...f, pickupAddress: val, pickupArea: matchedArea.name, pickupPincode: matchedArea.pincode }));
+                    setCharges(null);
+                  }
                 } else {
-                  update('pickupAddress', ' '); // trigger custom
+                  setForm(f => ({ ...f, pickupAddress: ' ', pickupArea: '', pickupPincode: '' }));
+                  setCharges(null);
                 }
               }}
               required
@@ -231,10 +252,17 @@ export default function CreateOrder() {
             <select 
               value={PRESET_ADDRESSES.includes(form.dropAddress) ? form.dropAddress : (form.dropAddress === '' ? '' : 'Custom')}
               onChange={e => {
-                if (e.target.value !== 'Custom') {
-                  update('dropAddress', e.target.value);
+                const val = e.target.value;
+                if (val !== 'Custom') {
+                  update('dropAddress', val);
+                  const matchedArea = areas.find(a => val.includes(a.name));
+                  if (matchedArea) {
+                    setForm(f => ({ ...f, dropAddress: val, dropArea: matchedArea.name, dropPincode: matchedArea.pincode }));
+                    setCharges(null);
+                  }
                 } else {
-                  update('dropAddress', ' '); // trigger custom
+                  setForm(f => ({ ...f, dropAddress: ' ', dropArea: '', dropPincode: '' }));
+                  setCharges(null);
                 }
               }}
               required

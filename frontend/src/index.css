@@ -246,10 +246,8 @@ a:hover { color: var(--accent-secondary); text-shadow: 0 0 10px var(--accent-glo
 .page-header h1 {
   font-size: 2.5rem;
   font-weight: 900;
-  background: linear-gradient(to right, #ffffff 0%, #a1a1aa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  color: #ffffff;
+  text-shadow: 0 2px 15px rgba(255,255,255,0.1);
 }
 
 .section { display: flex; flex-direction: column; gap: 1.5rem; }
@@ -541,7 +539,8 @@ input::placeholder { color: var(--text-muted); }
   min-height: 100vh;
   width: 100vw;
   background: #050505;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .auth-hero {
@@ -666,7 +665,7 @@ input::placeholder { color: var(--text-muted); }
 
 .auth-card {
   width: 100%;
-  max-width: 440px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -701,7 +700,7 @@ input::placeholder { color: var(--text-muted); }
   padding: 1.5rem;
   background: rgba(99, 102, 241, 0.05);
   border-radius: var(--radius-md);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
   border: 1px solid rgba(99, 102, 241, 0.2);
   line-height: 1.9;
