@@ -14,6 +14,7 @@ Enterprise-grade delivery management platform: customers place orders with live 
 | ORM | Prisma |
 | Auth | JWT + OTP-based Email Auth + Role-based access (Customer, Admin, Agent) |
 | Architecture| Modular Service-Controller pattern with distinct Core Engines |
+| Notifications| Email Verification (Mock/Resend ready) |
 
 ## Quick Start
 
@@ -80,6 +81,7 @@ npx tsx src/tests/integration.ts
 | `JWT_SECRET` | backend/.env | Secret for signing JWT tokens |
 | `PORT` | backend/.env | API port (default `3000`) |
 | `FRONTEND_URL` | backend/.env | CORS origin for frontend |
+| `RESEND_API_KEY` | backend/.env | (Optional) Resend API Key for live emails |
 | `VITE_API_URL` | frontend/.env | Backend API base URL (`http://localhost:3000/api`) |
 
 ## API Documentation
@@ -88,23 +90,57 @@ Base URL: `http://localhost:3000/api`
 All protected routes require header: `Authorization: Bearer <token>`
 
 ### Auth
-- `POST /auth/register` (Public) - Register with OTP
-- `POST /auth/verify-otp` (Public) - Verify registration
-- `POST /auth/login` (Public) - Login and receive JWT
-- `GET /auth/me` (Any) - Current user profile
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/auth/register` | Public | Register with OTP |
+| POST | `/auth/verify-otp` | Public | Verify registration |
+| POST | `/auth/login` | Public | Login and receive JWT |
+| GET | `/auth/me` | Any | Current user profile |
 
-### Orders
-- `POST /orders/calculate` (Customer, Admin) - Calculate delivery charge breakdown
-- `POST /orders` (Customer, Admin) - Create order atomically
-- `GET /orders` (Scoped) - List orders (Admin sees all, Customer sees theirs, Agent sees assigned)
-- `GET /orders/:id` (Scoped) - Order details & timeline
-- `PATCH /orders/:id/status` (Admin, Agent) - Update delivery state
-- `POST /orders/:id/reschedule` (Customer) - Reschedule failed delivery
+**Login response (Example):**
+```json
+{
+  "success": true,
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiIs...",
+    "user": {
+      "id": "abc...",
+      "name": "Rahul Sharma",
+      "email": "customer@delivery.com",
+      "role": "CUSTOMER"
+    }
+  }
+}
+```
 
-### Zones & Rate Cards
-- `GET/POST /zones` (Admin) - Zone CRUD
-- `GET/POST /areas` (Admin) - Area/pincode mapping CRUD
-- `GET/POST /rates` (Admin) - B2B/B2C rate configuration
+### Orders (Customer / Admin)
+| Method | Endpoint | Role | Description |
+|--------|----------|------|-------------|
+| POST | `/orders/calculate` | Customer, Admin | Calculate delivery charge breakdown |
+| POST | `/orders` | Customer, Admin | Create order atomically |
+| GET | `/orders` | Scoped | List orders |
+| GET | `/orders/:id` | Scoped | Order details & timeline |
+| POST | `/orders/:id/reschedule`| Customer | Reschedule failed delivery |
+
+**Calculate/Quote request (Example):**
+```json
+{
+  "pickupPincode": "110001",
+  "pickupArea": "Connaught Place",
+  "dropPincode": "560034",
+  "dropArea": "Koramangala",
+  "actualWeight": 2.5
+}
+```
+
+### Admin & Agent
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET/POST | `/zones` | Zone CRUD (Admin) |
+| GET/POST | `/areas` | Area/pincode mapping CRUD (Admin) |
+| GET/POST | `/rate-cards` | B2B/B2C rate configuration (Admin) |
+| GET | `/agents/me/orders`| Assigned orders (Agent) |
+| PATCH | `/orders/:id/status`| Update delivery state (Admin, Agent) |
 
 ## Rate Calculation Logic
 
@@ -154,18 +190,7 @@ By default (for local testing), the system prints OTP codes directly to the back
 
 To activate real emails, simply add your credentials to `backend/.env`:
 
-**Option A: Using Resend (Recommended)**
+**Using Resend (Recommended)**
 ```env
 RESEND_API_KEY=re_your_api_key_here
 ```
-
-**Option B: Using standard Gmail / SMTP**
-```env
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=465
-SMTP_USER=your-email@gmail.com
-SMTP_PASS=your-16-digit-app-password
-SMTP_FROM=your-email@gmail.com
-```
-
-
