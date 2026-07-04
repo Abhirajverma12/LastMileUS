@@ -19,188 +19,347 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="landing-layout">
+    <div className="landing-layout" style={{ background: '#0a0a0c', minHeight: '100vh', overflowX: 'hidden', fontFamily: '"Inter", sans-serif' }}>
       {/* Navbar */}
-      <nav className="landing-navbar">
-        <div className="landing-logo" style={{ color: 'var(--accent-primary)', textShadow: 'none', gap: '0.2rem' }}>
+      <nav className="landing-navbar" style={{ 
+        position: 'fixed', 
+        top: 0, 
+        width: '100%', 
+        padding: '1.5rem 4rem', 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center', 
+        zIndex: 50,
+        background: 'rgba(10, 10, 12, 0.8)',
+        backdropFilter: 'blur(12px)',
+        borderBottom: '1px solid rgba(255,255,255,0.05)'
+      }}>
+        <div className="landing-logo" style={{ fontSize: '1.5rem', fontWeight: 900, display: 'flex', gap: '0.2rem' }}>
           <span style={{ color: 'var(--accent-primary)' }}>LastMile</span><span style={{ color: '#fff' }}>US</span>
         </div>
-        <div className="landing-nav-links" style={{ gap: '2rem' }}>
+        <div className="landing-nav-links" style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
           {user ? (
             <>
               <span style={{ color: '#a1a1aa', fontSize: '0.9rem' }}>Welcome, {user.name}</span>
-              <Link to={getDashboardLink()} className="btn" style={{ background: 'var(--accent-primary)', color: '#000', borderRadius: '4px', padding: '0.5rem 1.25rem', fontWeight: 700 }}>Go to Dashboard</Link>
-              <button onClick={handleLogout} className="btn btn-outline" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#fff', borderRadius: '4px', padding: '0.5rem 1.25rem' }}>Sign Out</button>
+              <Link to={getDashboardLink()} className="btn" style={{ background: 'var(--accent-primary)', color: '#000', borderRadius: '6px', padding: '0.6rem 1.5rem', fontWeight: 700 }}>Go to Dashboard</Link>
+              <button onClick={handleLogout} className="btn btn-outline" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#fff', borderRadius: '6px', padding: '0.6rem 1.5rem' }}>Sign Out</button>
             </>
           ) : (
             <>
-              <Link to="/login" className="btn" style={{ background: 'var(--accent-primary)', color: '#000', borderRadius: '4px', padding: '0.5rem 1.25rem', fontWeight: 700 }}>Sign In</Link>
-              <Link to="/register" className="btn btn-outline" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#fff', borderRadius: '4px', padding: '0.5rem 1.25rem' }}>Register</Link>
+              <Link to="/login" style={{ color: '#fff', fontWeight: 600, textDecoration: 'none' }}>Log In</Link>
+              <Link to="/register" className="btn" style={{ background: 'var(--accent-primary)', color: '#000', borderRadius: '6px', padding: '0.6rem 1.5rem', fontWeight: 700 }}>Get Started</Link>
             </>
           )}
         </div>
       </nav>
 
-      {/* Main Content Area */}
-      <div className="landing-content">
+      {/* Hero Section */}
+      <section style={{ 
+        padding: '12rem 2rem 6rem', 
+        textAlign: 'center', 
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+      }}>
+        {/* Background Gradients */}
+        <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translate(-50%, -50%)', width: '800px', height: '500px', background: 'radial-gradient(ellipse, rgba(234, 179, 8, 0.15) 0%, transparent 70%)', zIndex: 0 }}></div>
         
-        {/* Top Split Section */}
-        <div className="landing-top-section">
-          <div className="landing-text-col">
-            <div className="badge-outline" style={{ color: 'var(--accent-primary)', borderColor: 'rgba(234, 179, 8, 0.3)', marginBottom: '1.5rem', display: 'inline-block', padding: '0.35rem 1.25rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: 'bold', letterSpacing: '1.5px', background: 'rgba(234, 179, 8, 0.05)' }}>
-              ✦ GLOBAL LOGISTICS HUB
-            </div>
-            <h1 className="landing-headline" style={{ 
-              fontWeight: 900, 
-              lineHeight: 1.1,
-              background: 'var(--accent-gradient)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              filter: 'drop-shadow(0 4px 20px rgba(234, 179, 8, 0.3))'
+        <div className="badge-outline" style={{ position: 'relative', zIndex: 1, color: 'var(--accent-primary)', borderColor: 'rgba(234, 179, 8, 0.3)', marginBottom: '2rem', display: 'inline-block', padding: '0.4rem 1.5rem', borderRadius: '999px', fontSize: '0.85rem', fontWeight: 700, letterSpacing: '1px', background: 'rgba(234, 179, 8, 0.1)' }}>
+          ✦ THE FUTURE OF GLOBAL LOGISTICS
+        </div>
+        
+        <h1 style={{ 
+          position: 'relative', zIndex: 1,
+          fontSize: '4.5rem', 
+          fontWeight: 900, 
+          lineHeight: 1.1,
+          maxWidth: '1000px',
+          marginBottom: '2rem',
+          color: '#fff',
+          letterSpacing: '-1px'
+        }}>
+          Intelligent routing for <br />
+          <span style={{ 
+            background: 'linear-gradient(to right, #eab308, #f59e0b)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}>modern delivery fleets.</span>
+        </h1>
+        
+        <p style={{ position: 'relative', zIndex: 1, color: '#a1a1aa', fontSize: '1.25rem', maxWidth: '700px', lineHeight: 1.6, marginBottom: '3rem' }}>
+          LastMileUS orchestrates your entire supply chain. Automate dispatch, track agents in real-time, and delight your customers with predictable delivery windows.
+        </p>
+        
+        <div style={{ position: 'relative', zIndex: 1, display: 'flex', gap: '1.5rem' }}>
+           <Link to={user ? getDashboardLink() : '/register'} className="btn" style={{ 
+             background: 'var(--accent-primary)', 
+             color: '#000', 
+             borderRadius: '8px', 
+             padding: '1rem 2.5rem', 
+             fontSize: '1.1rem', 
+             fontWeight: 700,
+             boxShadow: '0 10px 25px rgba(234, 179, 8, 0.3)',
+             border: 'none',
+             transition: 'transform 0.2s ease'
+           }}>
+             {user ? 'Launch Hub →' : 'Start Free Trial →'}
+           </Link>
+           <Link to="#features" className="btn btn-outline" style={{ 
+             background: 'rgba(255,255,255,0.03)', 
+             color: '#fff', 
+             borderRadius: '8px', 
+             padding: '1rem 2.5rem', 
+             fontSize: '1.1rem', 
+             fontWeight: 600,
+             border: '1px solid rgba(255,255,255,0.1)'
+           }}>
+             Explore Platform
+           </Link>
+        </div>
+
+        {/* Dashboard Mockup Showcase */}
+        <div style={{ marginTop: '5rem', position: 'relative', zIndex: 10, width: '100%', maxWidth: '1100px', perspective: '1000px' }}>
+          <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.02} transitionSpeed={2000}>
+            <div style={{ 
+              background: '#141419', 
+              borderRadius: '16px', 
+              border: '1px solid rgba(255,255,255,0.1)', 
+              padding: '1rem',
+              boxShadow: '0 30px 60px -15px rgba(0,0,0,1), 0 0 40px rgba(234,179,8,0.15)'
             }}>
-              Enterprise Transport<br />& Fleet Management
-            </h1>
-            <p className="landing-sub-headline" style={{ color: '#a1a1aa', lineHeight: 1.6, marginTop: '1.5rem' }}>
-              Empower your supply chain with our state-of-the-art dispatch platform. Accelerate delivery speeds, optimize import/export routes, and gain real-time visibility across your entire global operations network.
-            </p>
-            <div style={{ marginTop: '2.5rem', display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
-               <Link to={user ? getDashboardLink() : '/login'} className="btn" style={{ 
-                 background: 'var(--accent-gradient)', 
-                 color: '#000', 
-                 borderRadius: '8px', 
-                 padding: '1rem 2.5rem', 
-                 fontSize: '1.1rem', 
-                 fontWeight: 800,
-                 boxShadow: '0 10px 25px rgba(234, 179, 8, 0.4)',
-                 border: 'none',
-                 transition: 'all 0.3s ease',
-                 width: '100%',
-                 textAlign: 'center',
-                 display: 'flex',
-                 alignItems: 'center',
-                 justifyContent: 'center'
-               }}>
-                 {user ? 'Launch Hub →' : 'Start Managing Operations →'}
-               </Link>
-            </div>
-          </div>
-
-          <div className="landing-visual-col">
-            <div className="visual-container" style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', perspective: '1000px', border: 'none', background: 'transparent', boxShadow: 'none', width: '100%', height: '100%' }}>
-               
-               {/* Background Glow Only */}
-               <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', height: '100%', background: 'radial-gradient(circle, rgba(234, 179, 8, 0.15) 0%, transparent 60%)', animation: 'pulse-glow 6s infinite alternate', zIndex: 0 }}></div>
-               
-               {/* Beautiful Floating CSS Mockup with 3D Tilt Interactivity */}
-               <Tilt tiltMaxAngleX={15} tiltMaxAngleY={15} perspective={1000} scale={1.05} transitionSpeed={1000} style={{ width: '100%', maxWidth: '400px', zIndex: 10, animation: 'float 6s ease-in-out infinite' }}>
-                 <div style={{ position: 'relative', width: '100%' }}>
-                   
-                   {/* Main Mockup Card */}
-                   <div style={{ background: 'rgba(20, 20, 25, 0.7)', backdropFilter: 'blur(20px)', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.08)', padding: '2rem', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(234, 179, 8, 0.2)', cursor: 'pointer', transition: 'all 0.3s ease' }} className="interactive-card">
+              {/* Fake UI Header */}
+              <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', paddingLeft: '0.5rem' }}>
+                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ef4444' }}></div>
+                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#eab308' }}></div>
+                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#22c55e' }}></div>
+              </div>
+              {/* Fake UI Body */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 3fr', gap: '1rem', height: '500px' }}>
+                <div style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '8px', padding: '1rem' }}>
+                  <div style={{ height: '30px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', marginBottom: '1rem' }}></div>
+                  <div style={{ height: '20px', width: '70%', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', marginBottom: '0.5rem' }}></div>
+                  <div style={{ height: '20px', width: '80%', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', marginBottom: '0.5rem' }}></div>
+                  <div style={{ height: '20px', width: '60%', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', marginBottom: '2rem' }}></div>
+                  <div style={{ height: '100px', background: 'rgba(234,179,8,0.1)', border: '1px solid rgba(234,179,8,0.2)', borderRadius: '8px' }}></div>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' }}>
+                    <div style={{ height: '100px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px' }}></div>
+                    <div style={{ height: '100px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px' }}></div>
+                    <div style={{ height: '100px', background: 'rgba(255,255,255,0.03)', borderRadius: '8px' }}></div>
+                  </div>
+                  <div style={{ flex: 1, background: '#0a0a0c', borderRadius: '12px', position: 'relative', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)', boxShadow: 'inset 0 0 40px rgba(0,0,0,0.8)' }}>
+                     <style>
+                       {`
+                         @keyframes mapDash {
+                           to { stroke-dashoffset: -24; }
+                         }
+                         @keyframes mapPulse {
+                           0% { transform: scale(1); opacity: 0.8; }
+                           100% { transform: scale(2.5); opacity: 0; }
+                         }
+                       `}
+                     </style>
                      
-                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem', marginBottom: '1.5rem' }}>
-                       <span style={{ color: '#fff', fontWeight: 800, fontSize: '1.1rem' }}>Tracking: <span style={{ color: 'var(--accent-primary)' }}>LM-8923K</span></span>
-                       <span className="pulse-badge" style={{ background: 'rgba(234, 179, 8, 0.15)', color: 'var(--accent-primary)', padding: '0.3rem 0.8rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: 'bold' }}>IN TRANSIT</span>
+                     {/* Elegant Dot Matrix Background */}
+                     <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px)', backgroundSize: '20px 20px', opacity: 0.5 }}></div>
+                     
+                     {/* Glowing Ambient Core */}
+                     <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '80%', height: '80%', background: 'radial-gradient(circle, rgba(234,179,8,0.12) 0%, transparent 60%)', filter: 'blur(30px)' }}></div>
+
+                     {/* Fake Route Lines */}
+                     <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+                       <defs>
+                         <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                           <stop offset="0%" stopColor="rgba(234,179,8,0)" />
+                           <stop offset="40%" stopColor="var(--accent-primary)" />
+                           <stop offset="100%" stopColor="#f59e0b" />
+                         </linearGradient>
+                         <filter id="mapGlow">
+                           <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+                           <feMerge>
+                             <feMergeNode in="coloredBlur"/>
+                             <feMergeNode in="SourceGraphic"/>
+                           </feMerge>
+                         </filter>
+                       </defs>
+                       
+                       {/* Background Subtle Routes */}
+                       <path d="M50,100 C200,50 300,250 500,200 S700,300 850,100" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="3" />
+                       <path d="M-50,300 C150,350 250,150 400,200 S600,50 750,150" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="3" />
+
+                       {/* Main Active Route */}
+                       <path d="M100,300 C250,120 400,380 650,200" fill="none" stroke="url(#routeGrad)" strokeWidth="5" strokeDasharray="12,12" style={{ animation: 'mapDash 1.5s linear infinite' }} filter="url(#mapGlow)" />
+                       
+                       {/* Origin Node */}
+                       <circle cx="100" cy="300" r="7" fill="#fff" />
+                       <circle cx="100" cy="300" r="14" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
+
+                       {/* Destination Node with Pulse */}
+                       <g style={{ transformOrigin: '650px 200px' }}>
+                         <circle cx="650" cy="200" r="9" fill="var(--accent-primary)" filter="url(#mapGlow)" />
+                         <circle cx="650" cy="200" r="24" fill="none" stroke="var(--accent-primary)" strokeWidth="3" style={{ animation: 'mapPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' }} />
+                         <circle cx="650" cy="200" r="16" fill="none" stroke="var(--accent-primary)" strokeWidth="1" style={{ animation: 'mapPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite 1s' }} />
+                       </g>
+                       
+                       {/* Moving Vehicle Node */}
+                       <circle cx="430" cy="265" r="6" fill="#fff" filter="url(#mapGlow)" />
+                     </svg>
+
+                     {/* Floating UI Pill over the map */}
+                     <div style={{ position: 'absolute', top: '190px', left: '380px', background: 'rgba(10,10,12,0.85)', border: '1px solid rgba(234,179,8,0.5)', borderRadius: '999px', padding: '0.5rem 1rem', display: 'flex', alignItems: 'center', gap: '0.6rem', backdropFilter: 'blur(8px)', boxShadow: '0 10px 20px rgba(0,0,0,0.5), 0 0 15px rgba(234,179,8,0.2)' }}>
+                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#eab308', boxShadow: '0 0 10px #eab308' }}></div>
+                        <span style={{ color: '#fff', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.5px' }}>AGENT IN TRANSIT</span>
                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Tilt>
+        </div>
+      </section>
 
-                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                       {/* Progress Line */}
-                       <div style={{ position: 'relative', paddingLeft: '2rem' }}>
-                         <div style={{ position: 'absolute', left: '7px', top: '5px', bottom: '5px', width: '2px', background: 'linear-gradient(to bottom, var(--accent-primary) 50%, rgba(255,255,255,0.1) 50%)' }}></div>
-                         
-                         <div style={{ marginBottom: '1.5rem', position: 'relative' }} className="interactive-step">
-                           <div style={{ position: 'absolute', left: '-2rem', top: '2px', width: '16px', height: '16px', borderRadius: '50%', background: 'var(--accent-primary)', border: '3px solid #141419', boxShadow: '0 0 10px var(--accent-primary)' }}></div>
-                           <h4 style={{ color: '#fff', fontSize: '0.95rem', marginBottom: '0.2rem' }}>Package Picked Up</h4>
-                           <p style={{ color: '#a1a1aa', fontSize: '0.8rem' }}>10:42 AM • Distribution Center Alpha</p>
-                         </div>
+      {/* Metrics Banner */}
+      <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', background: 'rgba(255,255,255,0.01)', padding: '4rem 2rem' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', textAlign: 'center' }}>
+          <div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--accent-primary)', marginBottom: '0.5rem' }}>1M+</div>
+            <div style={{ color: '#a1a1aa', fontWeight: 600 }}>Deliveries Tracked</div>
+          </div>
+          <div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--accent-primary)', marginBottom: '0.5rem' }}>99.9%</div>
+            <div style={{ color: '#a1a1aa', fontWeight: 600 }}>System Uptime</div>
+          </div>
+          <div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--accent-primary)', marginBottom: '0.5rem' }}>15k+</div>
+            <div style={{ color: '#a1a1aa', fontWeight: 600 }}>Active Agents</div>
+          </div>
+          <div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--accent-primary)', marginBottom: '0.5rem' }}>45</div>
+            <div style={{ color: '#a1a1aa', fontWeight: 600 }}>Countries Served</div>
+          </div>
+        </div>
+      </section>
 
-                         <div style={{ position: 'relative' }} className="interactive-step">
-                           <div style={{ position: 'absolute', left: '-2rem', top: '2px', width: '16px', height: '16px', borderRadius: '50%', background: '#050505', border: '3px solid rgba(255,255,255,0.2)' }}></div>
-                           <h4 style={{ color: '#fff', fontSize: '0.95rem', marginBottom: '0.2rem' }}>Estimated Delivery</h4>
-                           <p style={{ color: '#a1a1aa', fontSize: '0.8rem' }}>2:30 PM • Destination Facility</p>
-                         </div>
-                       </div>
-                     </div>
+      {/* Features Section */}
+      <section id="features" style={{ padding: '8rem 2rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+          <h2 style={{ fontSize: '3rem', fontWeight: 900, color: '#fff', marginBottom: '1.5rem' }}>Engineered for <span style={{ color: 'var(--accent-primary)' }}>Scale</span></h2>
+          <p style={{ color: '#a1a1aa', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
+            Designed to handle thousands of concurrent import, export, and transit workflows effortlessly with military-grade precision.
+          </p>
+        </div>
+        
+        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+          {/* Feature 1 */}
+          <div style={{ background: 'rgba(255,255,255,0.03)', padding: '3rem 2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', transition: 'transform 0.3s ease, border-color 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.borderColor = 'var(--accent-primary)'} onMouseOut={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>🗺️</div>
+            <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '1rem', fontWeight: 800 }}>Algorithmic Routing</h3>
+            <p style={{ color: '#a1a1aa', lineHeight: 1.6 }}>Instantly computes the most efficient transit paths based on real-time traffic data, regional topology, and vehicle proximity to minimize overhead.</p>
+          </div>
+          {/* Feature 2 */}
+          <div style={{ background: 'rgba(255,255,255,0.03)', padding: '3rem 2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', transition: 'transform 0.3s ease, border-color 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.borderColor = 'var(--accent-primary)'} onMouseOut={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>🤖</div>
+            <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '1rem', fontWeight: 800 }}>Automated Dispatch</h3>
+            <p style={{ color: '#a1a1aa', lineHeight: 1.6 }}>Eliminate manual oversight. Our engine autonomously pairs high-priority consignments with the optimal agents for maximum fulfillment speed.</p>
+          </div>
+          {/* Feature 3 */}
+          <div style={{ background: 'rgba(255,255,255,0.03)', padding: '3rem 2rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', transition: 'transform 0.3s ease, border-color 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.borderColor = 'var(--accent-primary)'} onMouseOut={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>🛡️</div>
+            <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '1rem', fontWeight: 800 }}>Cryptographic Logs</h3>
+            <p style={{ color: '#a1a1aa', lineHeight: 1.6 }}>Every cargo scan, transit update, and proof-of-delivery is securely logged via an append-only architecture, ensuring absolute transparency.</p>
+          </div>
+        </div>
+      </section>
 
-                   </div>
+      {/* How it Works Workflow */}
+      <section style={{ padding: '6rem 2rem', background: 'linear-gradient(to bottom, rgba(234,179,8,0.05), transparent)' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <h2 style={{ fontSize: '3rem', fontWeight: 900, color: '#fff', marginBottom: '1.5rem' }}>How it Works</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '4rem', position: 'relative' }}>
+            {/* Connecting Line */}
+            <div style={{ position: 'absolute', top: '3rem', left: '10%', right: '10%', height: '2px', background: 'rgba(255,255,255,0.1)', zIndex: 0 }}></div>
+            
+            <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+              <div style={{ width: '6rem', height: '6rem', borderRadius: '50%', background: '#141419', border: '2px solid var(--accent-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem', margin: '0 auto 2rem', color: 'var(--accent-primary)' }}>1</div>
+              <h3 style={{ color: '#fff', fontSize: '1.3rem', marginBottom: '1rem' }}>Ingest & Route</h3>
+              <p style={{ color: '#a1a1aa', lineHeight: 1.6 }}>Orders flow into the system and are automatically assigned the most efficient delivery paths.</p>
+            </div>
+            
+            <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+              <div style={{ width: '6rem', height: '6rem', borderRadius: '50%', background: '#141419', border: '2px solid var(--accent-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem', margin: '0 auto 2rem', color: 'var(--accent-primary)' }}>2</div>
+              <h3 style={{ color: '#fff', fontSize: '1.3rem', marginBottom: '1rem' }}>Smart Dispatch</h3>
+              <p style={{ color: '#a1a1aa', lineHeight: 1.6 }}>Agents are pinged via the mobile dashboard to accept and fulfill the delivery orders.</p>
+            </div>
 
-                   {/* Floating Metric Pill 1 */}
-                   <div style={{ position: 'absolute', top: '-15px', right: '-10px', background: 'rgba(16, 185, 129, 0.15)', backdropFilter: 'blur(10px)', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '0.6rem 1rem', borderRadius: '16px', display: 'flex', alignItems: 'center', gap: '0.5rem', animation: 'float 5s ease-in-out infinite 1s' }} className="interactive-pill">
-                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 10px #10b981' }}></div>
-                     <span style={{ color: '#fff', fontSize: '0.8rem', fontWeight: 600 }}>99.8% On-Time</span>
-                   </div>
-
-                   {/* Floating Metric Pill 2 */}
-                   <div style={{ position: 'absolute', bottom: '-15px', left: '-10px', background: 'rgba(234, 179, 8, 0.15)', backdropFilter: 'blur(10px)', border: '1px solid rgba(234, 179, 8, 0.3)', padding: '0.6rem 1rem', borderRadius: '16px', display: 'flex', alignItems: 'center', gap: '0.5rem', animation: 'float 7s ease-in-out infinite 0.5s' }} className="interactive-pill">
-                     <span style={{ color: 'var(--accent-primary)', fontSize: '1.1rem', fontWeight: 900 }}>42</span>
-                     <span style={{ color: '#fff', fontSize: '0.8rem', fontWeight: 600 }}>Active Agents</span>
-                   </div>
-
-                 </div>
-               </Tilt>
-               
+            <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+              <div style={{ width: '6rem', height: '6rem', borderRadius: '50%', background: '#141419', border: '2px solid var(--accent-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem', margin: '0 auto 2rem', color: 'var(--accent-primary)' }}>3</div>
+              <h3 style={{ color: '#fff', fontSize: '1.3rem', marginBottom: '1rem' }}>Track & Deliver</h3>
+              <p style={{ color: '#a1a1aa', lineHeight: 1.6 }}>Customers view live GPS tracking while agents securely upload proof of delivery.</p>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Bottom Features Section */}
-        <div className="landing-features-section" style={{ position: 'relative', overflow: 'hidden' }}>
-          {/* Colorful Background Orbs */}
-          <div style={{ position: 'absolute', top: '-20%', left: '-10%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(234, 179, 8, 0.15) 0%, transparent 70%)', filter: 'blur(40px)', zIndex: 0 }}></div>
-          <div style={{ position: 'absolute', bottom: '-20%', right: '-10%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%)', filter: 'blur(40px)', zIndex: 0 }}></div>
+      {/* CTA Section */}
+      <section style={{ padding: '8rem 2rem', textAlign: 'center' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto', background: 'linear-gradient(135deg, rgba(234, 179, 8, 0.2), rgba(20,20,25,1))', padding: '5rem 3rem', borderRadius: '24px', border: '1px solid rgba(234, 179, 8, 0.3)', boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
+          <h2 style={{ fontSize: '3rem', fontWeight: 900, color: '#fff', marginBottom: '1.5rem' }}>Ready to optimize your fleet?</h2>
+          <p style={{ color: '#a1a1aa', fontSize: '1.2rem', marginBottom: '3rem' }}>Join the thousands of logistics companies utilizing LastMileUS to revolutionize their supply chains.</p>
+          <Link to="/register" className="btn" style={{ 
+             background: 'var(--accent-primary)', 
+             color: '#000', 
+             borderRadius: '8px', 
+             padding: '1.2rem 3rem', 
+             fontSize: '1.2rem', 
+             fontWeight: 800,
+             display: 'inline-block'
+           }}>
+             Create Free Account
+           </Link>
+        </div>
+      </section>
 
-          <div style={{ textAlign: 'center', marginBottom: '4rem', position: 'relative', zIndex: 1 }}>
-            <h2 style={{ 
-              fontSize: '3rem', 
-              fontWeight: 900, 
-              marginBottom: '1.5rem',
-              background: 'var(--accent-gradient)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              filter: 'drop-shadow(0 4px 15px rgba(234, 179, 8, 0.4))'
-            }}>Engineered for Scale</h2>
-            <p style={{ color: '#a1a1aa', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto', lineHeight: 1.8 }}>
-              Designed to handle thousands of concurrent import, export, and transit workflows effortlessly with military-grade precision.
-            </p>
+      {/* Footer */}
+      <footer style={{ borderTop: '1px solid rgba(255,255,255,0.05)', padding: '4rem 2rem 2rem', background: '#050505' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr', gap: '3rem', marginBottom: '4rem' }}>
+          <div>
+            <div className="landing-logo" style={{ fontSize: '1.5rem', fontWeight: 900, display: 'flex', gap: '0.2rem', marginBottom: '1.5rem' }}>
+              <span style={{ color: 'var(--accent-primary)' }}>LastMile</span><span style={{ color: '#fff' }}>US</span>
+            </div>
+            <p style={{ color: '#71717a', lineHeight: 1.6 }}>The premier intelligent routing and fleet management platform for modern logistics.</p>
           </div>
-          
-          <div className="feature-cards-grid" style={{ position: 'relative', zIndex: 1 }}>
-            <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} glareEnable glareMaxOpacity={0.15} glareColor="#eab308" perspective={1000} scale={1.02}>
-              <div className="feature-card-solid" style={{ background: 'linear-gradient(145deg, rgba(20,20,25,0.8) 0%, rgba(234, 179, 8, 0.1) 100%)', border: '1px solid rgba(234, 179, 8, 0.2)', boxShadow: '0 15px 35px rgba(0,0,0,0.4), inset 0 0 20px rgba(234, 179, 8, 0.05)' }}>
-                <div className="feature-icon-solid" style={{ background: 'linear-gradient(135deg, rgba(234, 179, 8, 0.2), rgba(234, 179, 8, 0.05))', borderColor: 'rgba(234, 179, 8, 0.4)', boxShadow: '0 0 20px rgba(234, 179, 8, 0.3)' }}>🗺️</div>
-                <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '1rem', fontWeight: 800 }}>Algorithmic Route Optimization</h3>
-                <p style={{ color: '#a1a1aa', fontSize: '1rem', lineHeight: '1.6' }}>
-                  Instantly computes the most efficient transit paths based on real-time traffic data, regional topology, and vehicle proximity to minimize overhead.
-                </p>
-              </div>
-            </Tilt>
-
-            <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} glareEnable glareMaxOpacity={0.15} glareColor="#f59e0b" perspective={1000} scale={1.02}>
-              <div className="feature-card-solid" style={{ background: 'linear-gradient(145deg, rgba(20,20,25,0.8) 0%, rgba(245, 158, 11, 0.1) 100%)', border: '1px solid rgba(245, 158, 11, 0.2)', boxShadow: '0 15px 35px rgba(0,0,0,0.4), inset 0 0 20px rgba(245, 158, 11, 0.05)' }}>
-                <div className="feature-icon-solid" style={{ background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.05))', borderColor: 'rgba(245, 158, 11, 0.4)', boxShadow: '0 0 20px rgba(245, 158, 11, 0.3)' }}>🤖</div>
-                <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '1rem', fontWeight: 800 }}>Automated Fleet Dispatch</h3>
-                <p style={{ color: '#a1a1aa', fontSize: '1rem', lineHeight: '1.6' }}>
-                  Eliminate manual oversight. Our engine autonomously pairs high-priority consignments with the optimal agents for maximum fulfillment speed.
-                </p>
-              </div>
-            </Tilt>
-
-            <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} glareEnable glareMaxOpacity={0.15} glareColor="#ca8a04" perspective={1000} scale={1.02}>
-              <div className="feature-card-solid" style={{ background: 'linear-gradient(145deg, rgba(20,20,25,0.8) 0%, rgba(202, 138, 4, 0.1) 100%)', border: '1px solid rgba(202, 138, 4, 0.2)', boxShadow: '0 15px 35px rgba(0,0,0,0.4), inset 0 0 20px rgba(202, 138, 4, 0.05)' }}>
-                <div className="feature-icon-solid" style={{ background: 'linear-gradient(135deg, rgba(202, 138, 4, 0.2), rgba(202, 138, 4, 0.05))', borderColor: 'rgba(202, 138, 4, 0.4)', boxShadow: '0 0 20px rgba(202, 138, 4, 0.3)' }}>🛡️</div>
-                <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '1rem', fontWeight: 800 }}>Cryptographic Audit Trails</h3>
-                <p style={{ color: '#a1a1aa', fontSize: '1rem', lineHeight: '1.6' }}>
-                  Every cargo scan, transit update, and proof-of-delivery is securely logged via an append-only architecture, ensuring absolute transparency.
-                </p>
-              </div>
-            </Tilt>
+          <div>
+            <h4 style={{ color: '#fff', fontWeight: 700, marginBottom: '1.5rem' }}>Platform</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <li><Link to="#" style={{ color: '#71717a', textDecoration: 'none' }}>Dispatch</Link></li>
+              <li><Link to="#" style={{ color: '#71717a', textDecoration: 'none' }}>Routing</Link></li>
+              <li><Link to="#" style={{ color: '#71717a', textDecoration: 'none' }}>Tracking</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style={{ color: '#fff', fontWeight: 700, marginBottom: '1.5rem' }}>Company</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <li><Link to="#" style={{ color: '#71717a', textDecoration: 'none' }}>About</Link></li>
+              <li><Link to="#" style={{ color: '#71717a', textDecoration: 'none' }}>Careers</Link></li>
+              <li><Link to="#" style={{ color: '#71717a', textDecoration: 'none' }}>Contact</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style={{ color: '#fff', fontWeight: 700, marginBottom: '1.5rem' }}>Legal</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <li><Link to="#" style={{ color: '#71717a', textDecoration: 'none' }}>Privacy</Link></li>
+              <li><Link to="#" style={{ color: '#71717a', textDecoration: 'none' }}>Terms</Link></li>
+            </ul>
           </div>
         </div>
-
-        <div style={{ textAlign: 'center', padding: '4rem 0', color: '#52525b', fontSize: '0.85rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div style={{ textAlign: 'center', color: '#52525b', fontSize: '0.9rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           © 2026 LastMileUS Global Logistics. All rights reserved.
         </div>
-      </div>
+      </footer>
     </div>
   );
 }
