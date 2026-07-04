@@ -90,7 +90,7 @@ export default function LandingPage() {
           LastMileUS orchestrates your entire supply chain. Automate dispatch, track agents in real-time, and delight your customers with predictable delivery windows.
         </p>
         
-        <div style={{ position: 'relative', zIndex: 1, display: 'flex', gap: '1.5rem' }}>
+        <div className="hero-buttons" style={{ position: 'relative', zIndex: 1, display: 'flex', gap: '1.5rem' }}>
            <Link to={user ? getDashboardLink() : '/register'} className="btn" style={{ 
              background: 'var(--accent-primary)', 
              color: '#000', 
